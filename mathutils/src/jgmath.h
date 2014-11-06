@@ -1,8 +1,19 @@
 /*
  * jgmath.h
  *
+ * lib-mathutils
+ * 		A C++ math library
+ *
  *  Created on: Oct 20, 2014
- *      Author: mrgame64
+ *      Author: James Game (mrgame64)
+ *
+ *  Credits go to:
+ *  	- Nathan Sweet
+ *  	- badlogicgames@gmail.com
+ * 	From the LibGDX project for most of the Java code
+ * 		&&
+ * 		- golak from HeliumProject
+ * 	For Vec2 operators
  */
 #ifndef JGMATH_H_
 #define JGMATH_H_
