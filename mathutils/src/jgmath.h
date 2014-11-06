@@ -21,7 +21,7 @@
 #include <cmath>
 
 //Defines floating point precision
-#ifdef DOUBLE_PREC
+#ifdef DOUBLE_T
 typedef double fp;
 #else
 typedef float fp;
