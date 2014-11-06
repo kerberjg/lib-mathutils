@@ -131,25 +131,31 @@ class Vec2 {
 		bool	operator== (const Vec2& v) const { return (x == v.x && y == v.y); }
 		bool	operator!= (const Vec2& v) const { return !(x == v.x && y == v.y); }
 
-		void normalize();
+		void norm();
 		void limit(fp l);
 		void clamp(fp min, fp max);
-		void set_angle(fp angle);
-		void rotate(fp angle);
+		void set_angle(fp rad);
+		void rotate(fp rad);
+		void rotate_90(int i);
 		void set_zero();
 
-		fp length();
-		fp lenght2();
+		fp len();
+		fp len2();
 		fp angle();
-		fp dot(Vec2& v);
-		fp dot(fp x, fp y);
+		fp dotp(Vec2& v);
+		fp dotp(fp x, fp y);
 		fp cross(Vec2& v);
 		fp cross(fp x, fp y);
+		fp dist(Vec2& v);
+		fp dist(fp x, fp y);
+		fp dist2(Vec2& v);
+		fp dist2(fp x, fp y);
 
-		Vec2 interpolate(Vec2& v, fp alpha);
+		Vec2 lerp(Vec2& v, fp alpha);
 
+		bool epsilon_equals(Vec2& v, fp epsilon);
+		bool epsilon_equals(fp x, fp y, fp epsilon);
 		bool is_zero();
-		bool is_on_line();
 };
 
 #endif /* JGMATH_H_ */
