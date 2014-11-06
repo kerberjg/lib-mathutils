@@ -27,12 +27,14 @@ typedef double fp;
 typedef float fp;
 #endif
 
+#ifndef PRECISE
 //Sine default precision bits
 #ifndef SIN_BITS
 #define SIN_BITS 16
 #endif
 #define SIN_MASK (~(-1 << SIN_BITS))
 #define SIN_COUNT (SIN_MASK + 1)
+#endif
 
 //Constants
 const fp PI = 3.14159265358979323846264338327950288419716939937510;
@@ -44,6 +46,7 @@ const fp radDeg = 180.0 / PI;
 const fp degRad = PI / 180.0;
 const fp radFull = 2 * PI;
 const fp degFull = 360.0;
+#ifndef PRECISE
 const fp radToIndex = SIN_COUNT / radFull;
 const fp degToIndex = SIN_COUNT / degFull;
 
@@ -58,7 +61,9 @@ void gen_sin_table() {
 		sin_table[(int)(i * degToIndex) & SIN_MASK] = sin(i * degRad);
 	sin_gen = true;
 };
+#endif
 
+#ifndef PRECISE
 fp sin(fp rad) {
 	if(!sin_gen)
 		gen_sin_table();
@@ -70,17 +75,24 @@ fp cos(fp rad) {
 		gen_sin_table();
 	return sin_table[(int)((rad + PI / 2) * radToIndex) & SIN_MASK];
 };
+#endif
 
 fp sin_deg(fp deg) {
+#ifndef PRECISE
 	if(!sin_gen)
 		gen_sin_table();
 	return sin_table[(int)(deg * degToIndex) & SIN_MASK];
+#endif
+	return sin(deg * degRad);
 };
 
 fp cos_deg(fp deg) {
+#ifndef PRECISE
 	if(!sin_gen)
 		gen_sin_table();
 	return sin_table[(int)((deg + 90) * degToIndex) & SIN_MASK];
+#endif
+	return cos(deg * degRad);
 };
 
 //Matrices
