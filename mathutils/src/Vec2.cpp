@@ -67,30 +67,15 @@ void Vec2::rotate(fp rad) {
 }
 
 void Vec2::rotate_90(int i) {
-	for(i%=4; i>0; i--) { //TODO: could be optimized! (just one switch, without all the IFs)
-		int ci = 0;
+	int ci = 0;
 
-		if(x >= 0)
-			ci += 0; //positive x
-		else
-			ci += 1; //negative x
+	ci |= ((x >= 0) ? 1 : 0);
+	ci |= ((y >= 0) ? 2 : 0);
 
-		if(y >= 0)
-			ci += 0; //positive y
-		else
-			ci += 2; //negative y
+	ci = (ci + i) % 4;
 
-		switch(ci) {
-		case 0:
-		case 3:
-			y = -y;
-			break;
-		case 1:
-		case 2:
-			x = -x;
-			break;
-		}
-	}
+	x = abs(x) * ((x >= 0) ? -1 : 1);
+	y = abs(y) * ((y >= 0) ? -1 : 1);
 }
 
 void Vec2::set_zero() {
@@ -149,10 +134,10 @@ fp Vec2::dist2(fp x, fp y) {
 	return dx*dx + dy*dy;
 }
 
-void Vec2::lerp(Vec2& v, fp alpha) {
+void Vec2::lerp(Vec2& v, fp a) {
 	Vec2 *vp = v;
-	fp inv_alpha = 1 - alpha;
+	fp inv_a = 1 - a;
 
-	x = (x * inv_alpha) + (vp->x * alpha);
-	y = (y * inv_alpha) + (vp->y * alpha);
+	x = (x * inv_a) + (vp->x * a);
+	y = (y * inv_a) + (vp->y * a);
 }
