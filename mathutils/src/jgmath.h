@@ -147,27 +147,28 @@ class Vec2 {
 		void limit(fp l);
 		void clamp(fp min, fp max);
 		void set_angle(fp rad);
+		void set_len(fp l);
 		void rotate(fp rad);
 		void rotate_90(int i);
-		void set_zero();
+		inline void set_zero();
 
-		fp len();
-		fp len2();
-		fp angle();
-		fp dotp(Vec2& v);
-		fp dotp(fp x, fp y);
-		fp cross(Vec2& v);
-		fp cross(fp x, fp y);
-		fp dist(Vec2& v);
-		fp dist(fp x, fp y);
-		fp dist2(Vec2& v);
-		fp dist2(fp x, fp y);
+		inline fp len();
+		inline fp len2();
+		inline fp angle();
+		inline fp dotp(Vec2& v);
+		inline fp dotp(fp x, fp y);
+		inline fp cross(Vec2& v);
+		inline fp cross(fp x, fp y);
+		inline fp dist(Vec2& v);
+		inline fp dist(fp x, fp y);
+		inline fp dist2(Vec2& v);
+		inline fp dist2(fp x, fp y);
 
-		Vec2 lerp(Vec2& v, fp alpha);
+		void lerp(Vec2& v, fp alpha);
 
 		bool epsilon_equals(Vec2& v, fp epsilon);
 		bool epsilon_equals(fp x, fp y, fp epsilon);
-		bool is_zero();
+		inline bool is_zero();
 };
 
 #endif /* JGMATH_H_ */
