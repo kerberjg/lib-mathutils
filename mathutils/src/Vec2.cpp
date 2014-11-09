@@ -11,23 +11,22 @@ Vec2::Vec2(): x(0), y(0) {
 }
 
 Vec2::Vec2(const Vec2& v) {
-	Vec2* vp = v;
-	x = vp->x;
-	y = vp->y;
+	x = v.x;
+	y = v.y;
 }
 
 Vec2::Vec2(fp x, fp y): x(x), y(y) {
 }
 
-Vec2 Vec2::copy() {
+Vec2* Vec2::copy() {
 	return new Vec2(x, y);
 }
 
 void Vec2::norm() {
 	if(x != 0 && y != 0) {
-		fp len = len();
-		x /= len;
-		y /= len;
+		fp l = len();
+		x /= l;
+		y /= l;
 	}
 }
 
@@ -52,15 +51,15 @@ void Vec2::set_angle(fp rad) {
 
 void Vec2::set_len(fp l) {
 	norm();
-	this *= len;
+	*this *= l;
 }
 
 void Vec2::rotate(fp rad) {
-	fp cos = cos(rad);
-	fp sin = sin(rad);
+	fp c = cos(rad);
+	fp s = sin(rad);
 
-	fp nx = x*cos - y*sin;
-	fp ny = x*sin - y*cos;
+	fp nx = x*c - y*s;
+	fp ny = x*s - y*c;
 
 	x = nx;
 	y = ny;
@@ -74,8 +73,8 @@ void Vec2::rotate_90(int i) {
 
 	ci = (ci + i) % 4;
 
-	x = abs(x) * ((x >= 0) ? -1 : 1);
-	y = abs(y) * ((y >= 0) ? -1 : 1);
+	x = std::abs(x) * ((x >= 0) ? -1 : 1);
+	y = std::abs(y) * ((y >= 0) ? -1 : 1);
 }
 
 void Vec2::set_zero() {
@@ -96,8 +95,7 @@ fp Vec2::angle() {
 }
 
 fp Vec2::dotp(Vec2& v) {
-	Vec2 *vp = v;
-	return dotp(vp->x, vp->y);
+	return dotp(v.x, v.y);
 }
 
 fp Vec2::dotp(fp x, fp y) {
@@ -105,8 +103,7 @@ fp Vec2::dotp(fp x, fp y) {
 }
 
 fp Vec2::cross(Vec2& v) {
-	Vec2 *vp = v;
-	return cross(vp->x, vp->y);
+	return cross(v.x, v.y);
 }
 
 fp Vec2::cross(fp x, fp y) {
@@ -114,8 +111,7 @@ fp Vec2::cross(fp x, fp y) {
 }
 
 fp Vec2::dist(Vec2& v) {
-	Vec2 *vp = v;
-	return dist(vp->x, vp->y);
+	return dist(v.x, v.y);
 }
 
 fp Vec2::dist(fp x, fp y) {
@@ -123,8 +119,7 @@ fp Vec2::dist(fp x, fp y) {
 }
 
 fp Vec2::dist2(Vec2& v) {
-	Vec2 *vp = v;
-	return dist2(vp->x, vp->y);
+	return dist2(v.x, v.y);
 }
 
 fp Vec2::dist2(fp x, fp y) {
@@ -135,9 +130,14 @@ fp Vec2::dist2(fp x, fp y) {
 }
 
 void Vec2::lerp(Vec2& v, fp a) {
-	Vec2 *vp = v;
 	fp inv_a = 1 - a;
 
-	x = (x * inv_a) + (vp->x * a);
-	y = (y * inv_a) + (vp->y * a);
+	x = (x * inv_a) + (v.x * a);
+	y = (y * inv_a) + (v.y * a);
 }
+
+bool Vec2::is_zero() {
+	return (x == 0 && y ==0);
+}
+
+
