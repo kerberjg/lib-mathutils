@@ -5,9 +5,8 @@
  *      Author: mrgame64
  */
 
-#include "jgmath.h"
 #include <iostream>
-#include "stdio.h"
+#include "jgmath.h"
 
 using namespace std;
 
