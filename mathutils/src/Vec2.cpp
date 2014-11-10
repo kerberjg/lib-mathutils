@@ -136,8 +136,15 @@ void Vec2::lerp(Vec2& v, fp a) {
 	y = (y * inv_a) + (v.y * a);
 }
 
+bool Vec2::epsilon_equals(Vec2& v, fp epsilon) {
+	return epsilon_equals(v.x, v.y, epsilon);
+}
+
+bool Vec2::epsilon_equals(fp x, fp y, fp epsilon) {
+	return ((this->x - x) <= epsilon) && ((this->y - y) <= epsilon);
+}
+
 bool Vec2::is_zero() {
 	return (x == 0 && y ==0);
 }
-
 
