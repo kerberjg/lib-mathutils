@@ -20,7 +20,7 @@
 
 #include <cmath>
 
-//#define PRECISE
+#define PRECISE
 //Defines floating point precision
 #ifdef DOUBLE_T
 typedef double fp;
@@ -61,6 +61,23 @@ fp pre_cos(fp rad);
 
 fp sin_deg(fp deg);
 fp cos_deg(fp deg);
+
+//Atan
+#ifndef PRECISE
+#define ATAN2_BITS = 8; // Adjust for accuracy.
+#define ATAN2_BITS2 = ATAN2_BITS << 1;
+#define ATAN2_MASK = ~(-1 << ATAN2_BITS2);
+#define ATAN2_COUNT = ATAN2_MASK + 1;
+#define ATAN2_DIM = (int)Math.sqrt(ATAN2_COUNT);
+#define INV_ATAN2_DIM_MINUS_1 = 1.0f / (ATAN2_DIM - 1);
+
+extern fp atan2_table[ATAN2_COUNT];
+extern bool atan2_gen;
+
+void get_atan2_table();
+fp pre_atan2(fp y, fp x);
+#endif
+
 
 //Matrices
 class Matrix3 {
