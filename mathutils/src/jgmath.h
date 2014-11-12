@@ -19,6 +19,7 @@
 #define JGMATH_H_
 
 #include <cmath>
+#include "common.h"
 
 #define PRECISE
 //Defines floating point precision
@@ -79,7 +80,7 @@ fp pre_atan2(fp y, fp x);
 #endif
 
 //Random numbers
-extern long r_seed0 = 1, r_seed1 = 1;
+extern long r_seed0, r_seed1;
 void randomize_seeds();
 
 long rand_long();
@@ -90,6 +91,13 @@ short rand_short();
 char rand_char();
 
 fp rand_norm();
+
+//MurmurHash3
+extern u64 m64;
+extern u32 m32;
+u64 murmurhash3_64();
+u32 murmurhash3_32();
+
 
 //Matrices
 class Matrix3 {
