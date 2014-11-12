@@ -78,6 +78,18 @@ void get_atan2_table();
 fp pre_atan2(fp y, fp x);
 #endif
 
+//Random numbers
+extern long r_seed0 = 1, r_seed1 = 1;
+void randomize_seeds();
+
+long rand_long();
+float rand_float();
+double rand_double();
+int rand_int();
+short rand_short();
+char rand_char();
+
+fp rand_norm();
 
 //Matrices
 class Matrix3 {
