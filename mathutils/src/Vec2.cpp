@@ -91,7 +91,11 @@ fp Vec2::len2() {
 
 fp Vec2::angle() {
 	//TODO: see if < -2PI // > 2PI -- cases should be checked
+	#ifndef PRECISE
+	return pre_atan2(y, x);
+	#else
 	return atan2(y, x);
+	#endif
 }
 
 fp Vec2::dotp(Vec2& v) {
