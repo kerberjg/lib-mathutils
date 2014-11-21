@@ -5,7 +5,7 @@
  *      Author: mrgame64
  */
 
-#include "jgmath.h"
+#include "vecmat.hpp"
 
 Vec2::Vec2(): x(0), y(0) {
 }

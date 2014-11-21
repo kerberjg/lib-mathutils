@@ -1,4 +1,4 @@
-#include "jgmath.h"
+#include "mathutils.hpp"
 
 u64 murmurhash3_64() {
 	m64 ^= m64 >> 33;

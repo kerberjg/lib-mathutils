@@ -5,7 +5,7 @@
  *      Author: mrgame64
  */
 
-#include "jgmath.h"
+#include "mathutils.hpp"
 #include "stdlib.h"
 #include <climits>
 

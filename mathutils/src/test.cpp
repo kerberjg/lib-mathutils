@@ -6,7 +6,7 @@
  */
 
 #include <iostream>
-#include "jgmath.h"
+#include "vecmat.hpp"
 
 using namespace std;
 
