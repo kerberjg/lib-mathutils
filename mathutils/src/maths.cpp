@@ -1,5 +1,5 @@
 /*
- * jgmath.cpp
+ * maths.cpp
  *
  *  Created on: Nov 9, 2014
  *      Author: mrgame64

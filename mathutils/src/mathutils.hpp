@@ -1,8 +1,19 @@
 /*
  * mathutils.hpp
  *
+ *	lib-mathutils
+ * 		A C++ math library
+ *
  *  Created on: Nov 21, 2014
  *      Author: mrgame64
+ *
+ *	Credits go to:
+ *  	- Nathan Sweet
+ *  	- badlogicgames@gmail.com
+ * 	From the LibGDX project for most of the Java code
+ * 		&&
+ * 		- golak from HeliumProject
+ * 	For Vec2 operators
  */
 
 #include <cmath>
