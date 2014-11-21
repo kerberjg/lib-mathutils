@@ -75,6 +75,7 @@ class Vec2 {
 		bool	operator== (const Vec2& v) const { return (x == v.x && y == v.y); }
 		bool	operator!= (const Vec2& v) const { return !(x == v.x && y == v.y); }
 
+		//TODO: add static functions
 		void norm();
 		void limit(fp l);
 		void clamp(fp min, fp max);
