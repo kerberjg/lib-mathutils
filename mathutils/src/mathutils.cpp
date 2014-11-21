@@ -5,7 +5,7 @@
  *      Author: kerberjg
  */
 
-#include "jgmath.h"
+#include "mathutils.hpp"
 
 #ifndef PRECISE
 void gen_sin_table() {

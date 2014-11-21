@@ -5,7 +5,7 @@
  *      Author: kerberjg
  */
 
-#include "jgmath.h"
+#include "mathutils.hpp"
 #include "stdlib.h"
 #include <climits>
 
