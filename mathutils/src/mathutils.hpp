@@ -15,7 +15,9 @@ typedef double fp;
 typedef float fp;
 #endif
 
-//Constants
+/*
+ * 		Mathematic constants
+ */
 const fp PI = 3.14159265358979323846264338327950288419716939937510;
 const fp HALF_PI = 0.5 * PI;
 const fp TWO_PI = 2.0 * PI;
@@ -27,7 +29,10 @@ const fp radFull = 2 * PI;
 const fp degFull = 360.0;
 
 
-//Functions
+/*
+ * 		Mathematic functions
+ * 		maths.cpp
+ */
 #ifndef PRECISE
 //Sine default precision bits
 #ifndef SIN_BITS
@@ -65,7 +70,10 @@ void get_atan2_table();
 fp pre_atan2(fp y, fp x);
 #endif
 
-//Random numbers
+/*
+ * 		Random number generation
+ * 		random.cpp
+ */
 extern long r_seed0, r_seed1;
 void randomize_seeds();
 
@@ -78,7 +86,11 @@ char rand_char();
 
 fp rand_norm();
 
-//MurmurHash3
+
+/*
+ * 		Cryptographic functions/algorithms
+ * 		crypto.cpp
+ */
 extern u64 m64;
 extern u32 m32;
 u64 murmurhash3_64();
