@@ -9,6 +9,14 @@
 #include "stdlib.h"
 #include <climits>
 
+/*	xorshift128+ algorithm
+ *	Credit to: Sebastiano Vigna (vigna@acm.org)
+ *	Released under Creative Commons Public License v1.0 (http://creativecommons.org/publicdomain/zero/1.0/)
+ *	http://xorshift.di.unimi.it/
+ *
+ *	Implementation by James Game (mrgame64)
+ */
+
 void randomize_seeds() {
 	r_seed0 = rand_long();
 	r_seed1 = rand_long();
@@ -20,10 +28,6 @@ long rand_long() {
 	if(r_seed1 == 0)
 		r_seed1 = rand();
 
-	//	xorshift128+ algorithm
-	//	Credit to: Sebastiano Vigna (vigna@acm.org)
-	//	Released under Creative Commons Public License v1.0 (http://creativecommons.org/publicdomain/zero/1.0/)
-	//	http://xorshift.di.unimi.it/
 	long s1 = r_seed0;
 	long s0 = r_seed1;
 	r_seed0 = s0;
