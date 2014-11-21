@@ -1,19 +1,8 @@
 /*
- * jgmath.h
- *
- * lib-mathutils
- * 		A C++ math library
+ * vecmath.hpp
  *
  *  Created on: Oct 20, 2014
  *      Author: Jamie Kerber (kerberjg)
- *
- *  Credits go to:
- *  	- Nathan Sweet
- *  	- badlogicgames@gmail.com
- * 	From the LibGDX project for most of the Java code
- * 		&&
- * 		- golak from HeliumProject
- * 	For Vec2 operators
  */
 #ifndef JGMATH_H_
 #define JGMATH_H_
