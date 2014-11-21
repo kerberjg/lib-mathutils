@@ -18,8 +18,6 @@
 #ifndef JGMATH_H_
 #define JGMATH_H_
 
-#include <cmath>
-#include "common.h"
 #include "mathutils.hpp"
 
 //Matrices
