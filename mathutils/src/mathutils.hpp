@@ -157,9 +157,11 @@ class f96 {
 		u64 v;
 		s32 s;
 
+		//Constructors
 		f96();
 		f96(u64 value, s32 scale);
 
+		//Operators
 		f96&	operator= (const f96& r) { v = r.v; s = r.s; return *this; }
 		f96&	operator+= (const f96& r) { v += r.v; s = max(s,r.s); return *this; }
 		f96&	operator-= (const f96& r) { v -= r.v; s = max(s,r.s); return *this; }
@@ -192,8 +194,12 @@ class f96 {
 					return (s != r.s);
 		};
 
-		f96& floatTof96(float f);
-		f96& doubleTof96(double d);
+		//Conversion
+		f96& float_to_f96(float f);
+		f96& double_to_f96(double d);
+		float to_float();
+		double to_double();
+		char* to_string();
 };
 //Big integers
 class u128;
