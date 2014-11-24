@@ -145,8 +145,11 @@ bool is_equal(fp x, fp error);
 
 /*
  * 		Very precise numbers
- * 		xprec.hpp
+ * 		xprec.cpp
  */
-class BigFloat;
+
+//96bit floating point
+class f96;
+//Big integers
 class u128;
 class u256;
