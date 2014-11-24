@@ -142,6 +142,9 @@ bool is_zero(fp x);
 bool is_zero(fp x, fp error);
 bool is_equal(fp x);
 bool is_equal(fp x, fp error);
+fp max(fp a, fp b);
+int max(int a, int b);
+long max(long a, long b);
 
 /*
  * 		Very precise numbers
@@ -149,7 +152,49 @@ bool is_equal(fp x, fp error);
  */
 
 //96bit floating point
-class f96;
+class f96 {
+	public:
+		u64 v;
+		s32 s;
+
+		f96();
+		f96(u64 value, s32 scale);
+
+		f96&	operator= (const f96& r) { v = r.v; s = r.s; return *this; }
+		f96&	operator+= (const f96& r) { v += r.v; s = max(s,r.s); return *this; }
+		f96&	operator-= (const f96& r) { v -= r.v; s = max(s,r.s); return *this; }
+		f96&	operator*= (const f96& r) { v *= r.v; s += r.s; return *this; }
+		f96&	operator/= (const f96& r) { v /= r.v; s -= r.s; return *this; }
+		//TODO: division of f96 to be investigated
+		//source: https://docs.oracle.com/javase/1.5.0/docs/api/java/math/BigDecimal.html#divide(BigDecimal divisor)
+
+		f96		operator+ (const f96& r) const { return f96(v + r.v, max(s,r.s)); };
+		f96		operator- (const f96& r) const { return f96(v - r.v, max(s,r.s)); };
+		f96		operator* (const f96& r) const { return f96(v * r.v, s + r.s); };
+		f96		operator/ (const f96& r) const { return f96(v / r.v, s - r.s); };
+
+		bool	operator== (const f96& r) {
+			if(v != r.v)
+							return false;
+						else
+							if(v == 0)
+								return true;
+							else
+								return (s == r.s);
+		};
+		bool	operator!= (const f96& r) {
+			if(v != r.v)
+				return true;
+			else
+				if(v == 0)
+					return false;
+				else
+					return (s != r.s);
+		};
+
+		f96& floatTof96(float f);
+		f96& doubleTof96(double d);
+};
 //Big integers
 class u128;
 class u256;
