@@ -195,9 +195,7 @@ class f96 {
 		};
 
 		//Conversion
-		f96& float_to_f96(float f);
 		f96& double_to_f96(double d);
-		float to_float();
 		double to_double();
 		char* to_string();
 };
