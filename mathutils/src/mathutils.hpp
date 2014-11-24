@@ -168,10 +168,10 @@ class f96 {
 		//TODO: division of f96 to be investigated
 		//source: https://docs.oracle.com/javase/1.5.0/docs/api/java/math/BigDecimal.html#divide(BigDecimal divisor)
 
-		f96		operator+ (const f96& r) const { return f96(v + r.v, max(s,r.s)); };
-		f96		operator- (const f96& r) const { return f96(v - r.v, max(s,r.s)); };
-		f96		operator* (const f96& r) const { return f96(v * r.v, s + r.s); };
-		f96		operator/ (const f96& r) const { return f96(v / r.v, s - r.s); };
+		f96		operator+ (const f96& r) const { return f96 (v + r.v, max(s,r.s)); };
+		f96		operator- (const f96& r) const { return f96 (v - r.v, max(s,r.s)); };
+		f96		operator* (const f96& r) const { return f96 (v * r.v, s + r.s); };
+		f96		operator/ (const f96& r) const { return f96 (v / r.v, s - r.s); };
 
 		bool	operator== (const f96& r) {
 			if(v != r.v)
