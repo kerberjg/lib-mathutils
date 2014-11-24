@@ -175,12 +175,12 @@ class f96 {
 
 		bool	operator== (const f96& r) {
 			if(v != r.v)
-							return false;
-						else
-							if(v == 0)
-								return true;
-							else
-								return (s == r.s);
+				return false;
+			else
+				if(v == 0)
+					return true;
+				else
+					return (s == r.s);
 		};
 		bool	operator!= (const f96& r) {
 			if(v != r.v)
