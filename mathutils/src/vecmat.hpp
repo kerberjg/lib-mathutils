@@ -24,6 +24,8 @@ class Matrix3 {
 
 		fp val[9];
 		fp tmp[9];
+
+		char* to_string();
 };
 
 //Vectors
@@ -89,6 +91,8 @@ class Vec2 {
 		inline bool epsilon_equals(Vec2& v, fp epsilon);
 		inline bool epsilon_equals(fp x, fp y, fp epsilon);
 		inline bool is_zero();
+
+		char* to_string();
 };
 
 #endif /* JGMATH_H_ */
