@@ -66,12 +66,22 @@ namespace math
 	inline fp sqrt(fp x) { return std::sqrt(x); }
 
 	/*
+	 * 		Extra-precision numbers
+	 * 		xprec.hpp
+	 * 		xprec.cpp
+	 */
+	class float128;
+	class u128;
+	class u256;
+	class u512;
+
+	/*
 	 * 		Random number generation
 	 * 		random.cpp
 	 */
 	void randomize_seeds();
 
-	long rand_long();
+	u64 rand_long();
 	float rand_float();
 	double rand_double();
 	int rand_int();
@@ -85,8 +95,20 @@ namespace math
 	 * 		Cryptographic functions/algorithms
 	 * 		crypto.cpp
 	 */
-	u64 murmurhash3_64();
+	//CRC
+	u16 crc16();
+	u32 crc32();
+	u64 crc64();
+	//Message-Digest
+	u128 md2();
+	u128 md3();
+	u128 md4();
+	u128 md5();
+	//SHA
+	u256 sha256();
+	//MurmurHash 3
 	u32 murmurhash3_32();
+	u64 murmurhash3_64();
 
 
 	/*
@@ -121,7 +143,7 @@ namespace math
 	bool is_equal(fp x, fp error);
 	fp max(fp a, fp b);
 	int max(int a, int b);
-	long max(long a, long b);
+	long long max(long long a, long long b);
 
 }
 
