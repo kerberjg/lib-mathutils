@@ -13,31 +13,33 @@
 
 #include "mathutils.hpp"
 
+using namespace math;
+
 //96bit floating point
-class f96 {
+class float128 {
 	public:
 		u64 v;
-		s32 s;
+		s64 s;
 
 		//Constructors
-		f96();
-		f96(u64 value, s32 scale);
+		float128();
+		float128(u64 value, s64 scale);
 
 		//Operators
-		f96&	operator= (const f96& r) { v = r.v; s = r.s; return *this; }
-		f96&	operator+= (const f96& r) { v += r.v; s = max(s,r.s); return *this; }
-		f96&	operator-= (const f96& r) { v -= r.v; s = max(s,r.s); return *this; }
-		f96&	operator*= (const f96& r) { v *= r.v; s += r.s; return *this; }
-		f96&	operator/= (const f96& r) { v /= r.v; s -= r.s; return *this; }
-		//TODO: division of f96 to be investigated
+		float128&	operator= (const float128& r) { v = r.v; s = r.s; return *this; }
+		float128&	operator+= (const float128& r) { v += r.v; s = max(s,r.s); return *this; }
+		float128&	operator-= (const float128& r) { v -= r.v; s = max(s,r.s); return *this; }
+		float128&	operator*= (const float128& r) { v *= r.v; s += r.s; return *this; }
+		float128&	operator/= (const float128& r) { v /= r.v; s -= r.s; return *this; }
+		//TODO: division of float128 to be investigated
 		//source: https://docs.oracle.com/javase/1.5.0/docs/api/java/math/BigDecimal.html#divide(BigDecimal divisor)
 
-		f96		operator+ (const f96& r) const { return f96 (v + r.v, max(s,r.s)); };
-		f96		operator- (const f96& r) const { return f96 (v - r.v, max(s,r.s)); };
-		f96		operator* (const f96& r) const { return f96 (v * r.v, s + r.s); };
-		f96		operator/ (const f96& r) const { return f96 (v / r.v, s - r.s); };
+		float128		operator+ (const float128& r) const { return float128 (v + r.v, max(s,r.s)); };
+		float128		operator- (const float128& r) const { return float128 (v - r.v, max(s,r.s)); };
+		float128		operator* (const float128& r) const { return float128 (v * r.v, s + r.s); };
+		float128		operator/ (const float128& r) const { return float128 (v / r.v, s - r.s); };
 
-		bool	operator== (const f96& r) {
+		bool	operator== (const float128& r) {
 			if(v != r.v)
 				return false;
 			else
@@ -46,7 +48,7 @@ class f96 {
 				else
 					return (s == r.s);
 		};
-		bool	operator!= (const f96& r) {
+		bool	operator!= (const float128& r) {
 			if(v != r.v)
 				return true;
 			else
@@ -57,7 +59,7 @@ class f96 {
 		};
 
 		//Conversion
-		f96& double_to_f96(double d);
+		float128& double_to_float128(double d);
 		double to_double();
 		char* to_string();
 };
