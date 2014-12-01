@@ -78,16 +78,49 @@ fp cos_deg(fp deg) {
 #define ATAN2_BITS2 ATAN2_BITS << 1
 #define ATAN2_MASK ~(-1 << ATAN2_BITS2)
 #define ATAN2_COUNT ATAN2_MASK + 1
-#define ATAN2_DIM (int)sqrt(ATAN2_COUNT)
+#define ATAN2_DIM (int)math::sqrt(ATAN2_COUNT)
 #define INV_ATAN2_DIM_MINUS_1 1.0f / (ATAN2_DIM - 1)
 
 fp atan2_table[ATAN2_COUNT];
 bool atan2_gen;
+
+void gen_atan2_table() {
+	for (int i = 0; i < ATAN2_DIM; i++) {
+		for (int j = 0; j < ATAN2_DIM; j++) {
+			fp x0 = i / ATAN2_DIM;
+			fp y0 = j / ATAN2_DIM;
+			atan2_table[j * ATAN2_DIM + i] = std::atan2(y0, x0);
+		}
+	}
+}
 #endif
 
 fp atan2(fp y, fp x) {
 #ifndef PRECISE
+	fp add, mul;
+	if (x < 0) {
+		if (y < 0) {
+			y = -y;
+			mul = 1;
+		} else
+			mul = -1;
+			x = -x;
+			add = -PI;
+		} else {
+			if (y < 0) {
+				y = -y;
+				mul = -1;
+			} else
+				mul = 1;
+			add = 0;
+		}
+		fp invDiv = 1 / ((x < y ? y : x) * INV_ATAN2_DIM_MINUS_1);
 
+		if (!std::isfinite(invDiv)) return (std::atan2(y, x) + add) * mul;
+
+		int xi = (int)(x * invDiv);
+		int yi = (int)(y * invDiv);
+		return (atan2_table[yi * ATAN2_DIM + xi] + add) * mul;
 #else
 	return std::atan2(y, x);
 #endif
