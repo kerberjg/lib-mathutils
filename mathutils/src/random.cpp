@@ -5,7 +5,7 @@
  *      Author: mrgame64
  */
 
-#include "mathutils.hpp"
+#include "xprec.hpp"
 #include "stdlib.h"
 #include <climits>
 
@@ -19,19 +19,21 @@ using namespace math;
  *	Implementation by James Game (mrgame64)
  */
 
-long r_seed0, r_seed1;
+u64 r_seed0, r_seed1;
 
 void math::randomize_seeds() {
-	r_seed0 = rand() | (rand() << 32);
-	r_seed1 = rand() | (rand() << 32);
+	r_seed0 = rand();
+	r_seed0 = (r_seed0 << 32) | rand();
+	r_seed1 = rand();
+	r_seed1 = (r_seed1 << 32) | rand();
 }
 
-long math::rand_long() {
+u64 math::rand_long() {
 	if(r_seed0 == 0 || r_seed1 == 0)
 		randomize_seeds();
 
-	long s1 = r_seed0;
-	long s0 = r_seed1;
+	u64 s1 = r_seed0;
+	u64 s0 = r_seed1;
 	r_seed0 = s0;
 	s1 ^= s1 << 23; // a
 	return ( r_seed1 = ( s1 ^ s0 ^ ( s1 >> 17 ) ^ ( s0 >> 26 ) ) ) + s0; // b, c
