@@ -1,6 +1,11 @@
 #include "mathutils.hpp"
 
-u64 murmurhash3_64() {
+using namespace math;
+
+u64 m64;
+u32 m32;
+
+u64 math::murmurhash3_64() {
 	m64 ^= m64 >> 33;
 	m64 *= 0xff51afd7ed558ccdULL;
 	m64 ^= m64 >> 33;
@@ -8,7 +13,7 @@ u64 murmurhash3_64() {
 	return m64 ^= m64 >> 33;
 }
 
-u32 murmurhash3_32() {
+u32 math::murmurhash3_32() {
 	m32 ^= m32 >> 16;
 	m32 *= 0x85ebca6b;
 	m32 ^= m32 >> 13;
