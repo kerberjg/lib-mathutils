@@ -31,7 +31,7 @@ void gen_sin_table() {
 };
 #endif
 
-fp sin(fp rad) {
+fp math::sin(fp rad) {
 #ifndef PRECISE
 	if(!sin_gen)
 		gen_sin_table();
@@ -41,7 +41,7 @@ fp sin(fp rad) {
 #endif
 };
 
-fp cos(fp rad) {
+fp math::cos(fp rad) {
 #ifndef PRECISE
 	if(!sin_gen)
 		gen_sin_table();
@@ -51,7 +51,7 @@ fp cos(fp rad) {
 #endif
 };
 
-fp sin_deg(fp deg) {
+fp math::sin_deg(fp deg) {
 #ifndef PRECISE
 	if(!sin_gen)
 		gen_sin_table();
@@ -61,7 +61,7 @@ fp sin_deg(fp deg) {
 #endif
 };
 
-fp cos_deg(fp deg) {
+fp math::cos_deg(fp deg) {
 #ifndef PRECISE
 	if(!sin_gen)
 		gen_sin_table();
@@ -95,7 +95,7 @@ void gen_atan2_table() {
 }
 #endif
 
-fp atan2(fp y, fp x) {
+fp math::atan2(fp y, fp x) {
 #ifndef PRECISE
 	fp add, mul;
 	if (x < 0) {
