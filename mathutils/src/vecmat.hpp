@@ -30,6 +30,8 @@ class Matrix3 {
 		char* to_string();
 };
 
+class Matrix4 {};
+
 //Vectors
 class Vec2 {
 	public:
@@ -47,11 +49,11 @@ class Vec2 {
 		Vec2&	operator-= (const Vec2& v) { x -= v.x; y -= v.y; return *this; }
 		Vec2&	operator*= (const Vec2& v) { x *= v.x; y *= v.y; return *this; }
 		Vec2&	operator*= (const fp v) { x *= v; y *= v; return *this; }
-		Vec2&	operator*= (const Matrix3& m) { fp x = this->x * m.val[0] + this->y * m.val[3] + m.val[6];
+		/*Vec2&	operator*= (const Matrix3& m) { fp x = this->x * m.val[0] + this->y * m.val[3] + m.val[6];
 												fp y = this->x * m.val[1] + this->y * m.val[4] + m.val[7];
 												this->x = x;
 												this->y = y;
-												return *this; };
+												return *this; };*/
 		Vec2&	operator/= (const Vec2& v) { x /= v.x; y /= v.y; return *this; }
 		Vec2&	operator/= (const fp v) { x /= v; y /= v; return *this; }
 		Vec2	operator- () const { return Vec2( -x, -y ); }
@@ -59,8 +61,8 @@ class Vec2 {
 		Vec2	operator- (const Vec2& v) const { return Vec2 (x - v.x, y - v.y); }
 		Vec2	operator* (const Vec2& v) const { return Vec2 (x * v.x, y * v.y); }
 		Vec2	operator* (const fp v) const { return Vec2 (x * v, y * v); }
-		Vec2	operator* (const Matrix3 m) { return Vec2 (	x * m.val[0] + y * m.val[3] + m.val[6],
-															x * m.val[1] + y * m.val[4] + m.val[7]); };
+		/*Vec2	operator* (const Matrix3 m) { return Vec2 (	x * m.val[0] + y * m.val[3] + m.val[6],
+															x * m.val[1] + y * m.val[4] + m.val[7]); };*/
 		Vec2	operator/ (const Vec2& v) const { return Vec2 (x / v.x, y / v.y); }
 		Vec2	operator/ (const fp v) const { return Vec2 (x / v, y / v); }
 		bool	operator== (const Vec2& v) const { return (x == v.x && y == v.y); }
@@ -96,5 +98,9 @@ class Vec2 {
 
 		char* to_string();
 };
+
+class Vec3 {};
+
+class Vec4 {};
 
 #endif /* JGMATH_H_ */
