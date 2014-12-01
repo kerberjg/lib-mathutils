@@ -22,15 +22,13 @@ using namespace math;
 long r_seed0, r_seed1;
 
 void math::randomize_seeds() {
-	r_seed0 = rand();
-	r_seed1 = rand();
+	r_seed0 = rand() | (rand() << 32);
+	r_seed1 = rand() | (rand() << 32);
 }
 
 long math::rand_long() {
-	if(r_seed0 == 0)
-		r_seed0 = rand();
-	if(r_seed1 == 0)
-		r_seed1 = rand();
+	if(r_seed0 == 0 || r_seed1 == 0)
+		randomize_seeds();
 
 	long s1 = r_seed0;
 	long s0 = r_seed1;
