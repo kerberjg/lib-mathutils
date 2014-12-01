@@ -27,15 +27,15 @@ class float128 {
 
 		//Operators
 		float128&	operator= (const float128& r) { v = r.v; s = r.s; return *this; }
-		float128&	operator+= (const float128& r) { v += r.v; s = max(s,r.s); return *this; }
-		float128&	operator-= (const float128& r) { v -= r.v; s = max(s,r.s); return *this; }
+		float128&	operator+= (const float128& r) { v += r.v; s = math::max(s,r.s); return *this; }
+		float128&	operator-= (const float128& r) { v -= r.v; s = math::max(s,r.s); return *this; }
 		float128&	operator*= (const float128& r) { v *= r.v; s += r.s; return *this; }
 		float128&	operator/= (const float128& r) { v /= r.v; s -= r.s; return *this; }
 		//TODO: division of float128 to be investigated
 		//source: https://docs.oracle.com/javase/1.5.0/docs/api/java/math/BigDecimal.html#divide(BigDecimal divisor)
 
-		float128		operator+ (const float128& r) const { return float128 (v + r.v, max(s,r.s)); };
-		float128		operator- (const float128& r) const { return float128 (v - r.v, max(s,r.s)); };
+		float128		operator+ (const float128& r) const { return float128 (v + r.v, math::max(s,r.s)); };
+		float128		operator- (const float128& r) const { return float128 (v - r.v, math::max(s,r.s)); };
 		float128		operator* (const float128& r) const { return float128 (v * r.v, s + r.s); };
 		float128		operator/ (const float128& r) const { return float128 (v / r.v, s - r.s); };
 
