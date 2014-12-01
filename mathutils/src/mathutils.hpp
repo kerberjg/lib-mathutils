@@ -30,6 +30,9 @@ typedef float fp;
  * 		Mathematic constants
  */
 
+namespace math
+{
+
 //PI
 const fp PI = 3.14159265358979323846264338327950288419716939937510;
 const fp HALF_PI = 0.5 * PI;
@@ -49,47 +52,23 @@ const fp E = 2.71828182845904523536028747135266249775724709369995; //Euler's num
  * 		maths.cpp
  */
 //Sine-cosine
-#ifndef PRECISE
-#ifndef SIN_BITS
-#define SIN_BITS 16
-#endif
-#define SIN_MASK (~(-1 << SIN_BITS))
-#define SIN_COUNT (SIN_MASK + 1)
-const fp radToIndex = SIN_COUNT / radFull;
-const fp degToIndex = SIN_COUNT / degFull;
-
-extern fp sin_table[SIN_COUNT];
-extern bool sin_gen;
-
-void gen_sin_table();
-fp pre_sin(fp rad);
-fp pre_cos(fp rad);
-#endif
+fp sin(fp rad);
+fp cos(fp rad);
 
 fp sin_deg(fp deg);
 fp cos_deg(fp deg);
 
 //Atan2
-#ifndef PRECISE
-#define ATAN2_BITS 8 // Adjust for accuracy.
-#define ATAN2_BITS2 ATAN2_BITS << 1
-#define ATAN2_MASK ~(-1 << ATAN2_BITS2)
-#define ATAN2_COUNT ATAN2_MASK + 1
-#define ATAN2_DIM (int)Math.sqrt(ATAN2_COUNT)
-#define INV_ATAN2_DIM_MINUS_1 1.0f / (ATAN2_DIM - 1)
+fp atan2(fp y, fp x);
 
-extern fp atan2_table[ATAN2_COUNT];
-extern bool atan2_gen;
-
-void get_atan2_table();
-fp pre_atan2(fp y, fp x);
-#endif
+//Powers&roots
+inline fp pow(fp b, fp e) { return std::pow(b, e); }
+inline fp sqrt(fp x) { return std::sqrt(x); }
 
 /*
  * 		Random number generation
  * 		random.cpp
  */
-extern long r_seed0, r_seed1;
 void randomize_seeds();
 
 long rand_long();
@@ -106,8 +85,6 @@ fp rand_norm();
  * 		Cryptographic functions/algorithms
  * 		crypto.cpp
  */
-extern u64 m64;
-extern u32 m32;
 u64 murmurhash3_64();
 u32 murmurhash3_32();
 
@@ -134,9 +111,9 @@ fp lerp(fp x, fp start, fp end);
 #define FLOAT_ROUNDING_ERROR 1e-6
 
 //Rounding
-int round(fp x);
-int floor(fp x);
-int ceil(fp x);
+inline int round(fp x) { return std::round(x); }
+inline int floor(fp x) { return std::floor(x); }
+inline int ceil(fp x) { return std::ceil(x); }
 //Comparing
 bool is_zero(fp x);
 bool is_zero(fp x, fp error);
@@ -145,4 +122,6 @@ bool is_equal(fp x, fp error);
 fp max(fp a, fp b);
 int max(int a, int b);
 long max(long a, long b);
+
+}
 

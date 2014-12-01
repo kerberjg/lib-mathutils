@@ -9,6 +9,8 @@
 
 #include "mathutils.hpp"
 
+using namespace math;
+
 //Matrices
 class Matrix3 {
 	public:
