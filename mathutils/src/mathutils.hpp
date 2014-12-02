@@ -16,6 +16,9 @@
  * 	For Vec2 operators
  */
 
+#ifndef MATHUTILS_HPP
+#define MATHUTILS_HPP
+
 #include <cmath>
 #include "common.h"
 
@@ -147,3 +150,4 @@ namespace math
 
 }
 
+#endif MATHUTILS_HPP
