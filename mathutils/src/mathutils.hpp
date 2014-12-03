@@ -68,7 +68,7 @@ namespace math
 	float fast_inv_sqrt(float x);
 	double fast_inv_sqrt(double x);
 
-	inline fp sqrt(fp x);
+	fp sqrt(fp x);
 	inline fp pow(fp b, fp e) { return std::pow(b, e); }
 
 	/*
