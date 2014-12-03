@@ -31,7 +31,7 @@ void gen_sin_table() {
 };
 #endif
 
-fp math::sin(fp rad) {
+inline fp math::sin(fp rad) {
 #ifndef PRECISE
 	if(!sin_gen)
 		gen_sin_table();
@@ -41,7 +41,7 @@ fp math::sin(fp rad) {
 #endif
 };
 
-fp math::cos(fp rad) {
+inline fp math::cos(fp rad) {
 #ifndef PRECISE
 	if(!sin_gen)
 		gen_sin_table();
@@ -51,7 +51,7 @@ fp math::cos(fp rad) {
 #endif
 };
 
-fp math::sin_deg(fp deg) {
+inline fp math::sin_deg(fp deg) {
 #ifndef PRECISE
 	if(!sin_gen)
 		gen_sin_table();
@@ -61,7 +61,7 @@ fp math::sin_deg(fp deg) {
 #endif
 };
 
-fp math::cos_deg(fp deg) {
+inline fp math::cos_deg(fp deg) {
 #ifndef PRECISE
 	if(!sin_gen)
 		gen_sin_table();
