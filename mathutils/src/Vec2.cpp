@@ -7,6 +7,8 @@
 
 #include "vecmat.hpp"
 
+using namespace math;
+
 Vec2::Vec2(): x(0), y(0) {
 }
 
