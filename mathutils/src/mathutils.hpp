@@ -72,16 +72,6 @@ namespace math
 	inline fp pow(fp b, fp e) { return std::pow(b, e); }
 
 	/*
-	 * 		Extra-precision numbers
-	 * 		xprec.hpp
-	 * 		xprec.cpp
-	 */
-	class float128;
-	class u128;
-	class u256;
-	class u512;
-
-	/*
 	 * 		Random number generation
 	 * 		random.cpp
 	 */
@@ -95,26 +85,6 @@ namespace math
 	char rand_char();
 
 	fp rand_norm();
-
-
-	/*
-	 * 		Cryptographic functions/algorithms
-	 * 		crypto.cpp
-	 */
-	//CRC
-	u16 crc16();
-	u32 crc32();
-	u64 crc64();
-	//Message-Digest
-	u128 md2();
-	u128 md3();
-	u128 md4();
-	u128 md5();
-	//SHA
-	u256 sha256();
-	//MurmurHash 3
-	u32 murmurhash3_32();
-	u64 murmurhash3_64();
 
 
 	/*
@@ -153,4 +123,4 @@ namespace math
 
 }
 
-#endif MATHUTILS_HPP
+#endif
