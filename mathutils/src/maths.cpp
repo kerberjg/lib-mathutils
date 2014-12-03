@@ -161,7 +161,7 @@ double math::fast_inv_sqrt(double x) {
 
 inline fp math::sqrt(fp x) {
 #ifndef PRECISE
-	return 1.0 / fast_inv_sqrt(x);
+	return x * fast_inv_sqrt(x);
 #else
 	return std::sqrt(x);
 #endif
