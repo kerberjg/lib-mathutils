@@ -8,12 +8,12 @@
 #include <iostream>
 #include "vecmat.hpp"
 
-using namespace std;
+using namespace math;
 
 int main() {
 	Vec2* v = new Vec2(0, 0);
 
-	cout << v->x << endl;
+	std::cout << v->x << std::endl;
 
 
 	return 0;
