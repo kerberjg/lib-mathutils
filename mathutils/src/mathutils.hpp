@@ -68,8 +68,14 @@ namespace math
 	float fast_inv_sqrt(float x);
 	double fast_inv_sqrt(double x);
 
-	fp sqrt(fp x);
 	inline fp pow(fp b, fp e) { return std::pow(b, e); }
+	inline fp sqrt(fp x) {
+		#ifndef PRECISE
+			return x * fast_inv_sqrt(x);
+		#else
+			return std::sqrt(x);
+		#endif
+	}
 
 	/*
 	 * 		Random number generation

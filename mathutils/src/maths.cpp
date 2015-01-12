@@ -139,11 +139,3 @@ double math::fast_inv_sqrt(double x) {
 #endif
 	return x;
 }
-
-inline fp math::sqrt(fp x) {
-#ifndef PRECISE
-	return x * fast_inv_sqrt(x);
-#else
-	return std::sqrt(x);
-#endif
-}
