@@ -31,7 +31,7 @@ void gen_sin_table() {
 };
 #endif
 
-inline fp math::sin(fp rad) {
+fp math::sin(fp rad) {
 #ifndef PRECISE
 	if(!sin_gen)
 		gen_sin_table();
@@ -41,7 +41,7 @@ inline fp math::sin(fp rad) {
 #endif
 };
 
-inline fp math::cos(fp rad) {
+fp math::cos(fp rad) {
 #ifndef PRECISE
 	if(!sin_gen)
 		gen_sin_table();
@@ -51,25 +51,6 @@ inline fp math::cos(fp rad) {
 #endif
 };
 
-inline fp math::sin_deg(fp deg) {
-#ifndef PRECISE
-	if(!sin_gen)
-		gen_sin_table();
-	return sin_table[(int)(deg * degToIndex) & SIN_MASK];
-#else
-	return std::sin(deg * degRad);
-#endif
-};
-
-inline fp math::cos_deg(fp deg) {
-#ifndef PRECISE
-	if(!sin_gen)
-		gen_sin_table();
-	return sin_table[(int)((deg + 90) * degToIndex) & SIN_MASK];
-#else
-	return std::cos(deg * degRad);
-#endif
-};
 
 #ifndef PRECISE
 #ifndef ATAN2_BITS

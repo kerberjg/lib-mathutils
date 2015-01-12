@@ -58,8 +58,8 @@ namespace math
 	fp sin(fp rad);
 	fp cos(fp rad);
 
-	fp sin_deg(fp deg);
-	fp cos_deg(fp deg);
+	inline fp sin_deg(fp deg) { return std::sin(deg * degRad); }
+	inline fp cos_deg(fp deg) { return std::cos(deg * degRad); }
 
 	//Atan2
 	fp atan2(fp y, fp x);
