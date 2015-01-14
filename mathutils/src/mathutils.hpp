@@ -102,8 +102,8 @@ namespace math
 	int clamp(int x, int max, int min);
 	fp clamp(fp x, fp max, fp min);
 	//Checking ranges
-	int is_range(int x, int max, int min);
-	fp is_range(fp x, fp max, fp min);
+	bool is_range(int x, int max, int min, bool extremes);
+	bool is_range(fp x, fp max, fp min, bool extremes);
 	//Interpolating
 	fp lerp(fp x, fp start, fp end);
 
