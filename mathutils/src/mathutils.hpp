@@ -119,13 +119,15 @@ namespace math
 	inline int floor(fp x) { return std::floor(x); }
 	inline int ceil(fp x) { return std::ceil(x); }
 	//Comparing
-	bool is_zero(fp x);
+	inline bool is_zero(fp x) { return is_zero(x, FLOAT_ROUNDING_ERROR); }
 	bool is_zero(fp x, fp error);
-	bool is_equal(fp x);
-	bool is_equal(fp x, fp error);
+	inline bool is_equal(fp a, fp b) { return is_equal(a, b, FLOAT_ROUNDING_ERROR); }
+	bool is_equal(fp a, fp b, fp error);
 	fp max(fp a, fp b);
+	fp min(fp a, fp b);
 	int max(int a, int b);
-	long long max(long long a, long long b);
+	int min(int a, int b);
+
 
 }
 
