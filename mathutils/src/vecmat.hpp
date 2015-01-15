@@ -41,7 +41,7 @@ namespace math {
 			Vec2(const Vec2& v);
 			Vec2(fp x, fp y);
 
-			Vec2* copy();
+			inline Vec2* copy() { return new Vec2(x, y); }
 
 			//Operators
 			Vec2&	operator= (const Vec2& v) { x = v.x; y = v.y; return *this; }
@@ -68,7 +68,6 @@ namespace math {
 			bool	operator== (const Vec2& v) const { return (x == v.x && y == v.y); }
 			bool	operator!= (const Vec2& v) const { return !(x == v.x && y == v.y); }
 
-			//TODO: add static functions
 			void norm();
 			void limit(fp l);
 			void clamp(fp min, fp max);
@@ -95,11 +94,27 @@ namespace math {
 			inline bool epsilon_equals(Vec2& v, fp epsilon);
 			inline bool epsilon_equals(fp x, fp y, fp epsilon);
 			inline bool is_zero();
-
-			std::string to_string();
 	};
 
-	class Vec3 {};
+	class Vec3 {
+		fp x, y, z;
+
+		Vec3();
+		Vec3(const Vec3& v);
+		Vec3(fp x, fp y, fp z);
+
+		inline Vec3* copy() { return new Vec3(x, y, z); }
+
+		//Operators
+
+		//Modifiers
+
+		//Interpolation
+
+		//Comparing
+
+		//String conversion
+	};
 
 	class Vec4 {};
 }
