@@ -106,6 +106,29 @@ namespace math {
 		inline Vec3* copy() { return new Vec3(x, y, z); }
 
 		//Operators
+		Vec3&	operator= (const Vec3& v) { x = v.x; y = v.y; z = v.z; return *this; }
+		Vec3&	operator+= (const Vec3& v) { x += v.x; y += v.y; z += v.z; return *this; }
+		Vec3&	operator-= (const Vec3& v) { x -= v.x; y -= v.y; z -= v.z; return *this; }
+		Vec3&	operator*= (const Vec3& v) { x *= v.x; y *= v.y; z *= v.z; return *this; }
+		Vec3&	operator*= (const fp v) { x *= v; y *= v; z *= v; return *this; }
+		/*Vec3&	operator*= (const Matrix3& m) { fp x = this->x * m.val[0] + this->y * m.val[3] + m.val[6];
+												fp y = this->x * m.val[1] + this->y * m.val[4] + m.val[7];
+												this->x = x;
+												this->y = y;
+												return *this; };*/
+		Vec3&	operator/= (const Vec3& v) { x /= v.x; y /= v.y; z *= v.z; return *this; }
+		Vec3&	operator/= (const fp v) { x /= v; y /= v; z /= v; return *this; }
+		Vec3	operator- () const { return Vec3( -x, -y, -z ); }
+		Vec3	operator+ (const Vec3& v) const { return Vec3 (x + v.x, y + v.y, z + v.z); }
+		Vec3	operator- (const Vec3& v) const { return Vec3 (x - v.x, y - v.y, z - v.z); }
+		Vec3	operator* (const Vec3& v) const { return Vec3 (x * v.x, y * v.y, z * v.z); }
+		Vec3	operator* (const fp v) const { return Vec3 (x * v, y * v, z * v); }
+		/*Vec3	operator* (const Matrix3 m) { return Vec3 (	x * m.val[0] + y * m.val[3] + m.val[6],
+															x * m.val[1] + y * m.val[4] + m.val[7]); };*/
+		Vec3	operator/ (const Vec3& v) const { return Vec3 (x / v.x, y / v.y, z / v.z); }
+		Vec3	operator/ (const fp v) const { return Vec3 (x / v, y / v, z / v); }
+		bool	operator== (const Vec3& v) const { return (x == v.x && y == v.y && z == v.z); }
+		bool	operator!= (const Vec3& v) const { return !(x == v.x && y == v.y && z == v.z); }
 
 		//Modifiers
 
