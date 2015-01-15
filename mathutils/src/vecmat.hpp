@@ -96,7 +96,7 @@ namespace math {
 			inline bool epsilon_equals(fp x, fp y, fp epsilon);
 			inline bool is_zero();
 
-			char* to_string();
+			std::string to_string();
 	};
 
 	class Vec3 {};

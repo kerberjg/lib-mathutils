@@ -150,3 +150,7 @@ bool Vec2::is_zero() {
 	return (x == 0 && y ==0);
 }
 
+std::string Vec2::to_string() {
+	return "[ "+std::to_string(x)+"; "+std::to_string(y)+" ]";
+}
+
