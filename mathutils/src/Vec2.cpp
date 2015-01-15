@@ -142,6 +142,6 @@ bool Vec2::epsilon_equals(fp x, fp y, fp epsilon) {
 }
 
 bool Vec2::is_zero() {
-	return (x == 0 && y ==0);
+	return (x == 0 && y == 0);
 }
 
