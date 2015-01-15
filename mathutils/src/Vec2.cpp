@@ -20,10 +20,6 @@ Vec2::Vec2(const Vec2& v) {
 Vec2::Vec2(fp x, fp y): x(x), y(y) {
 }
 
-Vec2* Vec2::copy() {
-	return new Vec2(x, y);
-}
-
 void Vec2::norm() {
 	if(x != 0 && y != 0) {
 		fp l = len();
@@ -92,7 +88,6 @@ fp Vec2::len2() {
 }
 
 fp Vec2::angle() {
-	//TODO: see if < -2PI // > 2PI -- cases should be checked
 	return atan2(y, x);
 }
 
@@ -148,9 +143,5 @@ bool Vec2::epsilon_equals(fp x, fp y, fp epsilon) {
 
 bool Vec2::is_zero() {
 	return (x == 0 && y ==0);
-}
-
-std::string Vec2::to_string() {
-	return "[ "+std::to_string(x)+"; "+std::to_string(y)+" ]";
 }
 
