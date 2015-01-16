@@ -127,6 +127,8 @@ namespace math
 	fp min(fp a, fp b);
 	int max(int a, int b);
 	int min(int a, int b);
+	s64 max(s64 a, s64 b);
+	s64 min(s64 a, s64 b);
 
 
 }
