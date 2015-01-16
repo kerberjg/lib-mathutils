@@ -12,9 +12,7 @@ using namespace math;
 Vec2::Vec2(): x(0), y(0) {
 }
 
-Vec2::Vec2(const Vec2& v) {
-	x = v.x;
-	y = v.y;
+Vec2::Vec2(const Vec2& v): x(v.x), y(v.y) {
 }
 
 Vec2::Vec2(fp x, fp y): x(x), y(y) {
