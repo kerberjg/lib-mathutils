@@ -112,17 +112,17 @@ namespace math
 	 * 		Rounding&comparing numbers
 	 * 		round.cpp
 	 */
-	#define FLOAT_ROUNDING_ERROR 1e-6
+	const fp FLOAT_ROUNDING_ERROR = 1e-6;
 
 	//Rounding
 	inline int round(fp x) { return std::round(x); }
 	inline int floor(fp x) { return std::floor(x); }
 	inline int ceil(fp x) { return std::ceil(x); }
 	//Comparing
-	inline bool is_zero(fp x) { return is_zero(x, FLOAT_ROUNDING_ERROR); }
 	bool is_zero(fp x, fp error);
-	inline bool is_equal(fp a, fp b) { return is_equal(a, b, FLOAT_ROUNDING_ERROR); }
+	inline bool is_zero(fp x) { return is_zero(x, FLOAT_ROUNDING_ERROR); }
 	bool is_equal(fp a, fp b, fp error);
+	inline bool is_equal(fp a, fp b) { return is_equal(a, b, FLOAT_ROUNDING_ERROR); }
 	fp max(fp a, fp b);
 	fp min(fp a, fp b);
 	int max(int a, int b);
