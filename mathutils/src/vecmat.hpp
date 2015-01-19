@@ -13,19 +13,153 @@ namespace math {
 
 	//Matrices
 	class Matrix3 {
-		public:
-			static const int M00 = 0;
-			static const int M01 = 3;
-			static const int M02 = 6;
-			static const int M10 = 1;
-			static const int M11 = 4;
-			static const int M12 = 7;
-			static const int M20 = 2;
-			static const int M21 = 5;
-			static const int M22 = 8;
+		/*
+		 * (x,y) or (j,i)
+		 *
+		 * [				   ]
+		 * [ (0,0) (1,0) (2,0) ]
+		 * [				   ]
+		 * [ (1,0) (1,1) (2,1) ]
+		 * [				   ]
+		 * [ (2,0) (2,1) (2,2) ]
+		 * [				   ]
+		 *
+		 */
 
-			fp val[9];
-			fp tmp[9];
+		private:
+			fp** tmp;
+			void swap();
+
+		public:
+			fp** v;
+
+			Matrix3();
+			Matrix3(fp val[3][3]);
+			Matrix3(const Matrix3& m);
+
+			inline Matrix3* copy() { return new Matrix3(*this); }
+
+			//Operators
+			Matrix3& operator= (const Matrix3& m) {
+				for(int x=0; x<3; x++)
+						for(int y=0; y<3; y++)
+							v[x][y] = m.v[x][y];
+				return *this;
+			}
+			Matrix3& operator+= (const Matrix3& m) {
+				for(int x=0; x<3; x++)
+						for(int y=0; y<3; y++)
+							v[x][y] += m.v[x][y];
+				return *this;
+			}
+			Matrix3& operator-= (const Matrix3& m) {
+				for(int x=0; x<3; x++)
+						for(int y=0; y<3; y++)
+							v[x][y] -= m.v[x][y];
+				return *this;
+			}
+			Matrix3& operator*= (const Matrix3& m) {
+				for(int x=0; x<3; x++)
+						for(int y=0; y<3; y++)
+							this->v[x][y] *= v[y][x];
+				return *this;
+			}
+			Matrix3& operator*= (const fp s) {
+				for(int x=0; x<3; x++)
+						for(int y=0; y<3; y++)
+							v[x][y] *= s;
+				return *this;
+			}
+			Matrix3& operator/= (const Matrix3& m) {
+				for(int x=0; x<3; x++)
+					for(int y=0; y<3; y++)
+						v[x][y] /= m.v[y][x];
+				return *this;
+			}
+			Matrix3& operator/= (const fp s) {
+				for(int x=0; x<3; x++)
+					for(int y=0; y<3; y++)
+						v[x][y] /= s;
+				return *this;
+			}
+
+			Matrix3& operator+ (const Matrix3& m) {
+				Matrix3* n = new Matrix3();
+
+				for(int x=0; x<3; x++)
+						for(int y=0; y<3; y++)
+							n->v[x][y] = v[x][y] + m.v[x][y];
+				return *n;
+			}
+			Matrix3& operator- (const Matrix3& m) {
+				Matrix3* n = new Matrix3();
+
+				for(int x=0; x<3; x++)
+						for(int y=0; y<3; y++)
+							n->v[x][y] = v[x][y] - m.v[x][y];
+				return *n;
+			}
+			Matrix3& operator- () {
+				Matrix3* n = new Matrix3();
+				for(int x=0; x<3; x++)
+					for(int y=0; y<3; y++)
+						n->v[x][y] = -v[x][y];
+				return *n;
+			}
+			Matrix3& operator* (const Matrix3& m) {
+				Matrix3* n = new Matrix3();
+
+				for(int x=0; x<3; x++)
+						for(int y=0; y<3; y++)
+							n->v[x][y] = v[x][y] * m.v[y][x];
+				return *n;
+			}
+			Matrix3& operator* (const fp s) {
+				Matrix3* n = new Matrix3();
+
+				for(int x=0; x<3; x++)
+						for(int y=0; y<3; y++)
+							n->v[x][y] = v[x][y] * s;
+				return *n;
+			}
+			Matrix3& operator/ (const Matrix3& m) {
+				Matrix3* n = new Matrix3();
+
+				for(int x=0; x<3; x++)
+						for(int y=0; y<3; y++)
+							n->v[x][y] = v[x][y] / m.v[y][x];
+				return *n;
+			}
+			Matrix3& operator/ (const fp s) {
+				Matrix3* n = new Matrix3();
+
+				for(int x=0; x<3; x++)
+						for(int y=0; y<3; y++)
+							n->v[x][y] = v[x][y] / s;
+				return *n;
+			}
+
+			bool operator== (const Matrix3& m) {
+				for(int x=0; x<3; x++)
+						for(int y=0; y<3; y++)
+							if(v[x][y] != m.v[x][y])
+								return false;
+				return true;
+			}
+			bool operator!= (const Matrix3& m) {
+				for(int x=0; x<3; x++)
+						for(int y=0; y<3; y++)
+							if(v[x][y] != m.v[x][y])
+								return true;
+				return false;
+			}
+
+
+			void trnsp();
+			fp det();
+
+			//Utils
+
 
 			char* to_string();
 	};
@@ -41,7 +175,7 @@ namespace math {
 			Vec2(const Vec2& v);
 			Vec2(fp x, fp y);
 
-			inline Vec2* copy() { return new Vec2(x, y); }
+			inline Vec2* copy() { return new Vec2(*this); }
 
 			//Operators
 			Vec2&	operator= (const Vec2& v) { x = v.x; y = v.y; return *this; }
@@ -62,11 +196,16 @@ namespace math {
 			Vec2	operator* (const Vec2& v) const { return Vec2 (x * v.x, y * v.y); }
 			Vec2	operator* (const fp v) const { return Vec2 (x * v, y * v); }
 			/*Vec2	operator* (const Matrix3 m) { return Vec2 (	x * m.val[0] + y * m.val[3] + m.val[6],
-																x * m.val[1] + y * m.val[4] + m.val[7]); };*/
+																x * m.val[1] + y * m.val[4] + m.v[7]); };*/
 			Vec2	operator/ (const Vec2& v) const { return Vec2 (x / v.x, y / v.y); }
 			Vec2	operator/ (const fp v) const { return Vec2 (x / v, y / v); }
+
 			bool	operator== (const Vec2& v) const { return (x == v.x && y == v.y); }
 			bool	operator!= (const Vec2& v) const { return !(x == v.x && y == v.y); }
+			bool	operator> (const Vec2& v) const { return ((x*x + y*y) > (v.x*v.x + v.y*v.y)); }
+			bool	operator< (const Vec2& v) const { return ((x*x + y*y) < (v.x*v.x + v.y*v.y)); }
+			bool	operator>= (const Vec2& v) const { return ((x*x + y*y) >= (v.x*v.x + v.y*v.y)); }
+			bool	operator<= (const Vec2& v) const { return ((x*x + y*y) <= (v.x*v.x + v.y*v.y)); }
 
 			void norm();
 			void limit(fp l);
@@ -103,7 +242,7 @@ namespace math {
 		Vec3(const Vec3& v);
 		Vec3(fp x, fp y, fp z);
 
-		inline Vec3* copy() { return new Vec3(x, y, z); }
+		inline Vec3* copy() { return new Vec3(*this); }
 
 		//Operators
 		Vec3&	operator= (const Vec3& v) { x = v.x; y = v.y; z = v.z; return *this; }
@@ -124,13 +263,22 @@ namespace math {
 		Vec3	operator* (const Vec3& v) const { return Vec3 (x * v.x, y * v.y, z * v.z); }
 		Vec3	operator* (const fp v) const { return Vec3 (x * v, y * v, z * v); }
 		/*Vec3	operator* (const Matrix3 m) { return Vec3 (	x * m.val[0] + y * m.val[3] + m.val[6],
-															x * m.val[1] + y * m.val[4] + m.val[7]); };*/
+															x * m.val[1] + y * m.val[4] + m.v[7]); };*/
 		Vec3	operator/ (const Vec3& v) const { return Vec3 (x / v.x, y / v.y, z / v.z); }
 		Vec3	operator/ (const fp v) const { return Vec3 (x / v, y / v, z / v); }
 		bool	operator== (const Vec3& v) const { return (x == v.x && y == v.y && z == v.z); }
 		bool	operator!= (const Vec3& v) const { return !(x == v.x && y == v.y && z == v.z); }
 
 		//Modifiers
+		void norm();
+		void limit(fp l);
+		void clamp(fp min, fp max);
+		void set_angle();
+		void set_len(fp l);
+		void rotate();
+
+		fp len();
+		fp len2();
 
 		//Interpolation
 
