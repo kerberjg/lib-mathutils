@@ -156,10 +156,24 @@ namespace math {
 
 
 			void trnsp();
+			void inv();
 			fp det();
 
 			//Utils
+			void set_rot(fp rad);
+			void set_rotd(fp deg);
+			void set_rot(Vec3 axis, fp rad);
+			void set_rotd(Vec3 axis, fp deg);
+			fp get_rot();
+			fp get_rotd();
 
+			void set_trn(fp x, fp y);
+			void set_trn(Vec2 v);
+			Vec2 get_trn();
+
+			void set_scl(fp sx, fp sy);
+			void set_scl(Vec2 sv);
+			Vec2 get_scl();
 
 			char* to_string();
 	};
