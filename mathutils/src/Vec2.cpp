@@ -19,11 +19,12 @@ Vec2::Vec2(fp x, fp y): x(x), y(y) {
 }
 
 void Vec2::norm() {
-	if(x != 0 && y != 0) {
-		fp l = len();
-		x /= l;
-		y /= l;
-	}
+	if(x == 0 && y == 0)
+		return;
+
+	fp l = len();
+	x /= l;
+	y /= l;
 }
 
 void Vec2::limit(fp l) {
