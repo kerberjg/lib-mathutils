@@ -54,6 +54,20 @@ namespace math
 	 * 		Mathematic functions
 	 * 		maths.cpp
 	 */
+	//Powers&roots
+		float fast_inv_sqrt(float x);
+		double fast_inv_sqrt(double x);
+
+		inline fp pow(fp b, fp e) { return std::pow(b, e); }
+		inline fp sqrt(fp x) {
+			#ifndef PRECISE
+				return x * fast_inv_sqrt(x);
+			#else
+				return std::sqrt(x);
+			#endif
+		}
+		inline fp abs(fp x) { return std::abs(x); }
+
 	//Sine-cosine
 	fp sin(fp rad);
 	fp cos(fp rad);
@@ -63,19 +77,6 @@ namespace math
 
 	//Atan2
 	fp atan2(fp y, fp x);
-
-	//Powers&roots
-	float fast_inv_sqrt(float x);
-	double fast_inv_sqrt(double x);
-
-	inline fp pow(fp b, fp e) { return std::pow(b, e); }
-	inline fp sqrt(fp x) {
-		#ifndef PRECISE
-			return x * fast_inv_sqrt(x);
-		#else
-			return std::sqrt(x);
-		#endif
-	}
 
 	/*
 	 * 		Random number generation
