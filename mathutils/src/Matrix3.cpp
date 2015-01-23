@@ -51,6 +51,27 @@ inline fp Matrix3::det() {
 			+v[0][2] * (v[1][0]*v[2][0] - v[1][1]*v[2][0]);
 }
 
+void Matrix3::inv() {
+	fp det = this->det();
+	if(det == 0) {	//determinant can't be zero
+		throw zero_det;
+		return;
+	}
+
+	tmp[0][0] = v[1][1] * v[2][2] - v[2][1] * v[1][2];
+	tmp[1][0] = v[2][0] * v[1][2] - v[1][0] * v[2][2];
+	tmp[2][0] = v[1][0] * v[2][1] - v[2][0] * v[1][1];
+	tmp[0][1] = v[2][1] * v[0][2] - v[0][1] * v[2][2];
+	tmp[1][1] = v[0][0] * v[2][2] - v[2][0] * v[0][2];
+	tmp[2][1] = v[2][0] * v[0][1] - v[0][0] * v[2][1];
+	tmp[0][2] = v[0][1] * v[1][2] - v[1][1] * v[0][2];
+	tmp[1][2] = v[1][0] * v[0][2] - v[0][0] * v[1][2];
+	tmp[2][2] = v[0][0] * v[1][1] - v[1][0] * v[0][1];
+
+	swap();
+	*this *= 1.0/det;
+}
+
 void Matrix3::set_rot(fp rad) {
 	fp cos = math::cos(rad);
 	fp sin = math::sin(rad);
