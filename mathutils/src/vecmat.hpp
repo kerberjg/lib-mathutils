@@ -29,16 +29,20 @@ namespace math {
 		 */
 
 		private:
+			/**Temporary matrix*/
 			fp** tmp;
+			/**Swaps temporary and matrix arrays*/
 			void swap();
 
 		public:
+			/**The matrix itself*/
 			fp** v;
 
 			Matrix3();
 			Matrix3(fp val[3][3]);
 			Matrix3(const Matrix3& m);
 
+			/**Copies the matrix to a new instance*/
 			inline Matrix3& copy() { return Matrix3(*this); }
 
 			//Operators
@@ -156,9 +160,13 @@ namespace math {
 				return false;
 			}
 
-
+			/**Transposes the matrix*/
 			void trnsp();
+			/**Inverts the matrix*/
 			void inv();
+			/**Sets the matrix to the identity matrix*/
+			void idt();
+			/**Calculates the determinant of the matrix*/
 			fp det();
 
 			//Utils
@@ -177,7 +185,7 @@ namespace math {
 			void set_scl(Vec2& sv);
 			Vec2 get_scl();
 
-			char* to_string();
+			std::string& to_string();
 	};
 
 	class Matrix4 {};
