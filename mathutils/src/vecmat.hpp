@@ -11,18 +11,20 @@
 
 namespace math {
 
+	class Vec2;
+	class Vec3;
+
+
 	//Matrices
 	class Matrix3 {
 		/*
-		 * (x,y) or (j,i)
+		 * (i,j) => (y,x)
 		 *
-		 * [				   ]
-		 * [ (0,0) (1,0) (2,0) ]
-		 * [				   ]
-		 * [ (1,0) (1,1) (2,1) ]
-		 * [				   ]
-		 * [ (2,0) (2,1) (2,2) ]
-		 * [				   ]
+		 * [ 0,0 0,1 0,2 ]
+		 * [			 ]
+		 * [ 1,0 1,1 2,1 ]
+		 * [			 ]
+		 * [ 2,0 2,1 2,2 ]
 		 *
 		 */
 
@@ -37,7 +39,7 @@ namespace math {
 			Matrix3(fp val[3][3]);
 			Matrix3(const Matrix3& m);
 
-			inline Matrix3* copy() { return new Matrix3(*this); }
+			inline Matrix3& copy() { return Matrix3(*this); }
 
 			//Operators
 			Matrix3& operator= (const Matrix3& m) {
@@ -162,17 +164,17 @@ namespace math {
 			//Utils
 			void set_rot(fp rad);
 			void set_rotd(fp deg);
-			void set_rot(Vec3 axis, fp rad);
-			void set_rotd(Vec3 axis, fp deg);
+			void set_rot(Vec3& axis, fp rad);
+			void set_rotd(Vec3& axis, fp deg);
 			fp get_rot();
 			fp get_rotd();
 
 			void set_trn(fp x, fp y);
-			void set_trn(Vec2 v);
+			void set_trn(Vec2& v);
 			Vec2 get_trn();
 
 			void set_scl(fp sx, fp sy);
-			void set_scl(Vec2 sv);
+			void set_scl(Vec2& sv);
 			Vec2 get_scl();
 
 			char* to_string();
@@ -250,55 +252,56 @@ namespace math {
 	};
 
 	class Vec3 {
-		fp x, y, z;
+		public:
+			fp x, y, z;
 
-		Vec3();
-		Vec3(const Vec3& v);
-		Vec3(fp x, fp y, fp z);
+			Vec3();
+			Vec3(const Vec3& v);
+			Vec3(fp x, fp y, fp z);
 
-		inline Vec3* copy() { return new Vec3(*this); }
+			inline Vec3* copy() { return new Vec3(*this); }
 
-		//Operators
-		Vec3&	operator= (const Vec3& v) { x = v.x; y = v.y; z = v.z; return *this; }
-		Vec3&	operator+= (const Vec3& v) { x += v.x; y += v.y; z += v.z; return *this; }
-		Vec3&	operator-= (const Vec3& v) { x -= v.x; y -= v.y; z -= v.z; return *this; }
-		Vec3&	operator*= (const Vec3& v) { x *= v.x; y *= v.y; z *= v.z; return *this; }
-		Vec3&	operator*= (const fp v) { x *= v; y *= v; z *= v; return *this; }
-		/*Vec3&	operator*= (const Matrix3& m) { fp x = this->x * m.val[0] + this->y * m.val[3] + m.val[6];
-												fp y = this->x * m.val[1] + this->y * m.val[4] + m.val[7];
-												this->x = x;
-												this->y = y;
-												return *this; };*/
-		Vec3&	operator/= (const Vec3& v) { x /= v.x; y /= v.y; z *= v.z; return *this; }
-		Vec3&	operator/= (const fp v) { x /= v; y /= v; z /= v; return *this; }
-		Vec3	operator- () const { return Vec3( -x, -y, -z ); }
-		Vec3	operator+ (const Vec3& v) const { return Vec3 (x + v.x, y + v.y, z + v.z); }
-		Vec3	operator- (const Vec3& v) const { return Vec3 (x - v.x, y - v.y, z - v.z); }
-		Vec3	operator* (const Vec3& v) const { return Vec3 (x * v.x, y * v.y, z * v.z); }
-		Vec3	operator* (const fp v) const { return Vec3 (x * v, y * v, z * v); }
-		/*Vec3	operator* (const Matrix3 m) { return Vec3 (	x * m.val[0] + y * m.val[3] + m.val[6],
-															x * m.val[1] + y * m.val[4] + m.v[7]); };*/
-		Vec3	operator/ (const Vec3& v) const { return Vec3 (x / v.x, y / v.y, z / v.z); }
-		Vec3	operator/ (const fp v) const { return Vec3 (x / v, y / v, z / v); }
-		bool	operator== (const Vec3& v) const { return (x == v.x && y == v.y && z == v.z); }
-		bool	operator!= (const Vec3& v) const { return !(x == v.x && y == v.y && z == v.z); }
+			//Operators
+			Vec3&	operator= (const Vec3& v) { x = v.x; y = v.y; z = v.z; return *this; }
+			Vec3&	operator+= (const Vec3& v) { x += v.x; y += v.y; z += v.z; return *this; }
+			Vec3&	operator-= (const Vec3& v) { x -= v.x; y -= v.y; z -= v.z; return *this; }
+			Vec3&	operator*= (const Vec3& v) { x *= v.x; y *= v.y; z *= v.z; return *this; }
+			Vec3&	operator*= (const fp v) { x *= v; y *= v; z *= v; return *this; }
+			/*Vec3&	operator*= (const Matrix3& m) { fp x = this->x * m.val[0] + this->y * m.val[3] + m.val[6];
+													fp y = this->x * m.val[1] + this->y * m.val[4] + m.val[7];
+													this->x = x;
+													this->y = y;
+													return *this; };*/
+			Vec3&	operator/= (const Vec3& v) { x /= v.x; y /= v.y; z *= v.z; return *this; }
+			Vec3&	operator/= (const fp v) { x /= v; y /= v; z /= v; return *this; }
+			Vec3	operator- () const { return Vec3( -x, -y, -z ); }
+			Vec3	operator+ (const Vec3& v) const { return Vec3 (x + v.x, y + v.y, z + v.z); }
+			Vec3	operator- (const Vec3& v) const { return Vec3 (x - v.x, y - v.y, z - v.z); }
+			Vec3	operator* (const Vec3& v) const { return Vec3 (x * v.x, y * v.y, z * v.z); }
+			Vec3	operator* (const fp v) const { return Vec3 (x * v, y * v, z * v); }
+			/*Vec3	operator* (const Matrix3 m) { return Vec3 (	x * m.val[0] + y * m.val[3] + m.val[6],
+																x * m.val[1] + y * m.val[4] + m.v[7]); };*/
+			Vec3	operator/ (const Vec3& v) const { return Vec3 (x / v.x, y / v.y, z / v.z); }
+			Vec3	operator/ (const fp v) const { return Vec3 (x / v, y / v, z / v); }
+			bool	operator== (const Vec3& v) const { return (x == v.x && y == v.y && z == v.z); }
+			bool	operator!= (const Vec3& v) const { return !(x == v.x && y == v.y && z == v.z); }
 
-		//Modifiers
-		void norm();
-		void limit(fp l);
-		void clamp(fp min, fp max);
-		void set_angle();
-		void set_len(fp l);
-		void rotate();
+			//Modifiers
+			void norm();
+			void limit(fp l);
+			void clamp(fp min, fp max);
+			void set_angle();
+			void set_len(fp l);
+			void rotate();
 
-		fp len();
-		fp len2();
+			fp len();
+			fp len2();
 
-		//Interpolation
+			//Interpolation
 
-		//Comparing
+			//Comparing
 
-		//String conversion
+			//String conversion
 	};
 
 	class Vec4 {};
