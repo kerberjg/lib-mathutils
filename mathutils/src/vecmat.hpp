@@ -170,21 +170,34 @@ namespace math {
 			fp det();
 
 			//Utils
+			/**Set the matrix to a rotation matrix given a rotation angle*/
 			void set_rot(fp rad);
+			/**Set the matrix to a rotation matrix given a rotation angle in degrees*/
 			void set_rotd(fp deg);
+			/**Set the matrix to a rotation matrix given a rotation axis and angle*/
 			void set_rot(Vec3& axis, fp rad);
+			/**Set the matrix to a rotation matrix given a rotation axis and angle in degrees*/
 			void set_rotd(Vec3& axis, fp deg);
+			/**Given the matrix is a rotation matrix, returns the rotation angle*/
 			fp get_rot();
+			/**Given the matrix is a rotation matrix, returns the rotation angle in degrees*/
 			fp get_rotd();
 
+			/**Sets the matrix to a translation matrix given translation coordinates*/
 			void set_trn(fp x, fp y);
+			/**Sets the matrix to a translation matrix given a translation vector*/
 			void set_trn(Vec2& v);
+			/**Given the matrix is a translation matrix, returns the translation vector*/
 			Vec2 get_trn();
 
+			/**Sets the matrix to a scaling matrix given scale factors*/
 			void set_scl(fp sx, fp sy);
+			/**Sets the matrix to a scaling matrix given a scaling vector*/
 			void set_scl(Vec2& sv);
+			/**Given the matrix is a scaling matrix, returns the scaling vector*/
 			Vec2 get_scl();
 
+			/**Returns a string containing the matrix in a human-readable format*/
 			std::string& to_string();
 	};
 
