@@ -11,6 +11,10 @@
 
 namespace math {
 
+	enum matrix_exceptions {
+		zero_det = 10
+	};
+
 	class Vec2;
 	class Vec3;
 
@@ -43,7 +47,7 @@ namespace math {
 			Matrix3(const Matrix3& m);
 
 			/**Copies the matrix to a new instance*/
-			inline Matrix3& copy() { return Matrix3(*this); }
+			inline Matrix3 copy() { return Matrix3(*this); }
 
 			//Operators
 			Matrix3& operator= (const Matrix3& m) {
