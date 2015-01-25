@@ -200,9 +200,6 @@ namespace math {
 			void set_scl(Vec2& sv);
 			/**Given the matrix is a scaling matrix, returns the scaling vector*/
 			Vec2 get_scl();
-
-			/**Returns a string containing the matrix in a human-readable format*/
-			std::string& to_string();
 	};
 
 	class Matrix4 {};
