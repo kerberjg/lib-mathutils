@@ -19,6 +19,9 @@ using namespace math;
  *	Implementation by James Game (mrgame64)
  */
 
+const double NORM_FLOAT = 1.0 / (1L << 24);
+const double NORM_DOUBL = 1.0 / (1L << 53);
+
 u64 r_seed0, r_seed1;
 
 void math::randomize_seeds() {
@@ -52,9 +55,9 @@ char math::rand_char() {
 }
 
 double math::rand_double() {
-	return (double)rand_long()/LONG_MAX;
+	return (rand_long() >> 11) * NORM_DOUBL;
 }
 
 float math::rand_float() {
-	return (float)rand_long()/LONG_MAX;
+	return (rand_long() >> 40) * NORM_FLOAT;
 }
