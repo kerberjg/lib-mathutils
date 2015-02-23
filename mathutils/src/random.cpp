@@ -61,3 +61,11 @@ double math::rand_double() {
 float math::rand_float() {
 	return (rand_long() >> 40) * NORM_FLOAT;
 }
+
+double math::rand_gauss(double mean, double stdd) {
+
+}
+
+double math::rand_invgauss(double mean, double std) {
+
+}

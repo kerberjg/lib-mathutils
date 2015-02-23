@@ -91,7 +91,8 @@ namespace math
 	short rand_short();
 	char rand_char();
 
-	fp rand_norm();
+	double rand_gauss(double mean, double std);
+	double rand_invgauss(double mean, double std);
 
 
 	/*
