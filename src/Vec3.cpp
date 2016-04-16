@@ -2,7 +2,7 @@
  * Vec3.cpp
  *
  *  Created on: Jan 16, 2015
- *      Author: kerberjg
+ *      Author: Jamie Kerber <kerber.jg@gmail.com>
  */
 
 #include "vecmat.hpp"

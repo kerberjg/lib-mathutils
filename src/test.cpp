@@ -2,7 +2,7 @@
  * test.cpp
  *
  *  Created on: Nov 4, 2014
- *      Author: kerberjg
+ *      Author: Jamie Kerber <kerber.jg@gmail.com>
  */
 
 #include <iostream>

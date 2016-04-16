@@ -4,7 +4,7 @@
  * 		Cryptographic functions/algorithms
  * 		crypto.cpp
  *  Created on: Dec 3, 2014
- *      Author: kerberjg
+ *      Author: Jamie Kerber <kerber.jg@gmail.com>
  */
 
 #include "mathutils.hpp"

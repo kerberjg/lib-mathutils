@@ -2,7 +2,7 @@
  * vecmath.hpp
  *
  *  Created on: Oct 20, 2014
- *      Author: Jamie Kerber (kerberjg)
+ *      Author: Jamie Kerber <kerber.jg@gmail.com>
  */
 #ifndef JGMATH_H_
 #define JGMATH_H_

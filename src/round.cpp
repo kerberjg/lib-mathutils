@@ -2,7 +2,7 @@
  * round.cpp
  *
  *  Created on: Jan 14, 2015
- *      Author: kerberjg
+ *      Author: Jamie Kerber <kerber.jg@gmail.com>
  */
 
 #include "mathutils.hpp"

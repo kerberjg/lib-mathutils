@@ -2,7 +2,7 @@
  * bitManipulation.h
  *
  *  Created on: Sep 30, 2013
- *      Author: kerberjg
+ *      Author: Jamie Kerber <kerber.jg@gmail.com>
  */
 
 #ifndef BITMANIPULATION_H_

@@ -5,7 +5,7 @@
  * 		xprec.cpp
  *
  *  Created on: Nov 26, 2014
- *      Author: kerberjg
+ *      Author: Jamie Kerber <kerber.jg@gmail.com>
  */
 
 #ifndef XPREC_HPP_

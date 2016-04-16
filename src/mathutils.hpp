@@ -5,7 +5,7 @@
  * 		A C++ math library
  *
  *  Created on: Nov 21, 2014
- *      Author: kerberjg
+ *      Author: Jamie Kerber <kerber.jg@gmail.com>
  *
  *	Credits go to:
  *  	- Nathan Sweet
