@@ -2,7 +2,7 @@
  * Matrix3.cpp
  *
  *  Created on: Jan 17, 2015
- *      Author: mrgame64
+ *      Author: Jakub Kerber <kerber.jg@gmail.com>
  */
 
 #include "vecmat.hpp"

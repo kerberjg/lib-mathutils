@@ -2,7 +2,7 @@
  * test.cpp
  *
  *  Created on: Nov 4, 2014
- *      Author: mrgame64
+ *      Author: Jakub Kerber <kerber.jg@gmail.com>
  */
 
 #include <iostream>

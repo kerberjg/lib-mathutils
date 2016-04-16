@@ -1,3 +1,9 @@
+/*
+ * crypto.cpp
+ *  Created on: Dec 3, 2014
+ *      Author: Jakub Kerber <kerber.jg@gmail.com>
+ */
+
 #include "crypto.hpp"
 
 using namespace math;

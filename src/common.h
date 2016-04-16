@@ -2,7 +2,7 @@
  * common.h
  *
  *  Created on: Sep 25, 2013
- *      Author: mrgame64
+ *      Author: Jakub Kerber <kerber.jg@gmail.com>
  */
 
 #ifndef COMMON_H_

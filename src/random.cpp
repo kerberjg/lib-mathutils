@@ -2,7 +2,7 @@
  * random.cpp
  *
  *  Created on: Nov 12, 2014
- *      Author: mrgame64
+ *      Author: Jakub Kerber <kerber.jg@gmail.com>
  */
 
 #include "xprec.hpp"
@@ -16,7 +16,7 @@ using namespace math;
  *	Released under Creative Commons Public License v1.0 (http://creativecommons.org/publicdomain/zero/1.0/)
  *	http://xorshift.di.unimi.it/
  *
- *	Implementation by James Game (mrgame64)
+ *	Implementation by James Game (Jakub Kerber <kerber.jg@gmail.com>)
  */
 
 const double NORM_FLOAT = 1.0 / (1L << 24);
