@@ -16,7 +16,7 @@ using namespace math;
  *	Released under Creative Commons Public License v1.0 (http://creativecommons.org/publicdomain/zero/1.0/)
  *	http://xorshift.di.unimi.it/
  *
- *	Implementation by James Game (Jakub Kerber <kerber.jg@gmail.com>)
+ *	Implementation by Jakub Kerber <kerber.jg@gmail.com>
  */
 
 const double NORM_FLOAT = 1.0 / (1L << 24);
@@ -62,6 +62,7 @@ float math::rand_float() {
 	return (rand_long() >> 40) * NORM_FLOAT;
 }
 
+//TODO: Implement gaussian random
 double math::rand_gauss(double mean, double stdd) {
 
 }
