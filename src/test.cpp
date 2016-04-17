@@ -6,7 +6,7 @@
  */
 
 #include <iostream>
-#include "vecmath/vecmat.hpp"
+#include "vecmat.hpp"
 
 using namespace math;
 
