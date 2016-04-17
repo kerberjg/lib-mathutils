@@ -5,7 +5,7 @@
  *      Author: Jamie Kerber <kerber.jg@gmail.com>
  */
 
-#include "vecmat.hpp"
+#include "../vecmat.hpp"
 
 using namespace math;
 

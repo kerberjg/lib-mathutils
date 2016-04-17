@@ -4,7 +4,7 @@
  *      Author: Jamie Kerber <kerber.jg@gmail.com>
  */
 
-#include "crypto.hpp"
+#include "../crypto.hpp"
 
 using namespace math;
 
