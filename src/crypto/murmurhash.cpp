@@ -4,7 +4,7 @@
  *      Author: Jakub Kerber <kerber.jg@gmail.com>
  */
 
-#include "../crypto.hpp"
+#include "../hash.hpp"
 
 using namespace math;
 
