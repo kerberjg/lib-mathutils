@@ -7,7 +7,7 @@
 #ifndef JGMATH_H_
 #define JGMATH_H_
 
-#include "mathutils.hpp"
+#include "../mathutils.hpp"
 
 namespace math {
 
