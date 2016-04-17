@@ -4,8 +4,8 @@
  *  Created on: Oct 20, 2014
  *      Author: Jakub Kerber <kerber.jg@gmail.com>
  */
-#ifndef JGMATH_H_
-#define JGMATH_H_
+#ifndef VECMATH_H_
+#define VECMATH_H_
 
 #include "mathutils.hpp"
 
@@ -18,8 +18,11 @@ namespace math {
 	class Vec2;
 	class Vec3;
 
-
 	//Matrices
+	//TODO: Rename MatrixX => MatX
+	//TODO: Implement and define Matrix2
+	class Matrix2 {};
+
 	class Matrix3 {
 		/*
 		 * (i,j) => (y,x)
@@ -39,7 +42,7 @@ namespace math {
 			void swap();
 
 		public:
-			/**The matrix itself*/
+			/**Raw matrix*/
 			fp** v;
 
 			Matrix3();
@@ -202,6 +205,7 @@ namespace math {
 			Vec2 get_scl();
 	};
 
+	//TODO: Implement Matrix4
 	class Matrix4 {};
 
 	//Vectors
@@ -289,6 +293,7 @@ namespace math {
 			Vec3&	operator-= (const Vec3& v) { x -= v.x; y -= v.y; z -= v.z; return *this; }
 			Vec3&	operator*= (const Vec3& v) { x *= v.x; y *= v.y; z *= v.z; return *this; }
 			Vec3&	operator*= (const fp v) { x *= v; y *= v; z *= v; return *this; }
+			//TODO: Check Vec * Matrix operators
 			/*Vec3&	operator*= (const Matrix3& m) { fp x = this->x * m.val[0] + this->y * m.val[3] + m.val[6];
 													fp y = this->x * m.val[1] + this->y * m.val[4] + m.val[7];
 													this->x = x;
@@ -319,6 +324,7 @@ namespace math {
 			fp len();
 			fp len2();
 
+			//TODO: Implement missing Vec3 functions
 			//Interpolation
 
 			//Comparing
@@ -326,7 +332,8 @@ namespace math {
 			//String conversion
 	};
 
+	//TODO: Evaluate whether Vec4 is needed
 	class Vec4 {};
 }
 
-#endif /* JGMATH_H_ */
+#endif /* VECMATH_H_ */
