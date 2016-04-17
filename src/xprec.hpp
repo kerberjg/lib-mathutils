@@ -15,7 +15,7 @@
 
 namespace math {
 
-	//96bit floating point
+	//Big floats
 	class float128 {
 		public:
 			u64 v;
@@ -63,6 +63,7 @@ namespace math {
 			double to_double();
 			char* to_string();
 	};
+
 	//Big integers
 	class u128;
 	class u256;

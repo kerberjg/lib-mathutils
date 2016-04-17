@@ -55,18 +55,18 @@ namespace math
 	 * 		maths.cpp
 	 */
 	//Powers&roots
-		float fast_inv_sqrt(float x);
-		double fast_inv_sqrt(double x);
+	float fast_inv_sqrt(float x);
+	double fast_inv_sqrt(double x);
 
-		inline fp pow(fp b, fp e) { return std::pow(b, e); }
-		inline fp sqrt(fp x) {
-			#ifndef PRECISE
-				return x * fast_inv_sqrt(x);
-			#else
-				return std::sqrt(x);
-			#endif
-		}
-		inline fp abs(fp x) { return std::abs(x); }
+	inline fp pow(fp b, fp e) { return std::pow(b, e); }
+	inline fp sqrt(fp x) {
+		#ifndef PRECISE
+			return x * fast_inv_sqrt(x);
+		#else
+			return std::sqrt(x);
+		#endif
+	}
+	inline fp abs(fp x) { return std::abs(x); }
 
 	//Sine-cosine
 	fp sin(fp rad);
@@ -131,8 +131,6 @@ namespace math
 	int min(int a, int b);
 	s64 max(s64 a, s64 b);
 	s64 min(s64 a, s64 b);
-
-
 }
 
 #endif
