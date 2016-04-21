@@ -11,7 +11,7 @@ using namespace math;
 
 #ifndef PRECISE
 #ifndef SIN_BITS
-#define SIN_BITS 16
+#define SIN_BITS 18
 #endif
 #define SIN_MASK (~(-1 << SIN_BITS))
 #define SIN_COUNT (SIN_MASK + 1)
