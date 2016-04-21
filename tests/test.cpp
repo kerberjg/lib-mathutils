@@ -5,8 +5,10 @@
  *      Author: Jamie Kerber <kerber.jg@gmail.com>
  */
 
+//#define PRECISE
+
 #include <iostream>
-#include "vecmat.hpp"
+#include "../src/vecmat.hpp"
 
 using namespace math;
 
