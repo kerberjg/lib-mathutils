@@ -5,7 +5,7 @@
  *      Author: Jakub Kerber <kerber.jg@gmail.com>
  */
 
-#include "xprec.hpp"
+#include "../xprec.hpp"
 #include "stdlib.h"
 #include <climits>
 

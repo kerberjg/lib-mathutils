@@ -5,7 +5,7 @@
  *      Author: Jakub Kerber <kerber.jg@gmail.com>
  */
 
-#include "mathutils.hpp"
+#include "../mathutils.hpp"
 
 using namespace math;
 

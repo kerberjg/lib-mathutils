@@ -5,7 +5,7 @@
  *      Author: mrgame64
  */
 
-#include "mathutils.hpp"
+#include "../mathutils.hpp"
 
 using namespace math;
 
