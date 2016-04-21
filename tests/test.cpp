@@ -12,6 +12,7 @@
 
 using namespace math;
 
+/*
 int main() {
 	Vec2* v = new Vec2(0, 0);
 
@@ -20,3 +21,4 @@ int main() {
 
 	return 0;
 }
+*/
