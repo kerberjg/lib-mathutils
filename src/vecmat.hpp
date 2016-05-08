@@ -11,7 +11,7 @@
 
 namespace math {
 
-	enum matrix_exceptions {
+	enum Mat_exceptions {
 		zero_det = 10
 	};
 
@@ -19,11 +19,10 @@ namespace math {
 	class Vec3;
 
 	//Matrices
-	//TODO: Rename MatrixX => MatX
-	//TODO: Implement and define Matrix2
-	class Matrix2 {};
+	//TODO: Implement and define Mat2
+	class Mat2 {};
 
-	class Matrix3 {
+	class Mat3 {
 		/*
 		 * (i,j) => (y,x)
 		 *
@@ -36,115 +35,115 @@ namespace math {
 		 */
 
 		private:
-			/**Temporary matrix*/
+			/**Temporary Mat*/
 			fp** tmp;
-			/**Swaps temporary and matrix arrays*/
+			/**Swaps temporary and Mat arrays*/
 			void swap();
 
 		public:
-			/**Raw matrix*/
+			/**Raw Mat*/
 			fp** v;
 
-			Matrix3();
-			Matrix3(fp val[3][3]);
-			Matrix3(const Matrix3& m);
+			Mat3();
+			Mat3(fp val[3][3]);
+			Mat3(const Mat3& m);
 
-			/**Copies the matrix to a new instance*/
-			inline Matrix3 copy() { return Matrix3(*this); }
+			/**Copies the Mat to a new instance*/
+			inline Mat3 copy() { return Mat3(*this); }
 
 			//Operators
-			Matrix3& operator= (const Matrix3& m) {
+			Mat3& operator= (const Mat3& m) {
 				for(int x=0; x<3; x++)
 						for(int y=0; y<3; y++)
 							v[x][y] = m.v[x][y];
 				return *this;
 			}
-			Matrix3& operator+= (const Matrix3& m) {
+			Mat3& operator+= (const Mat3& m) {
 				for(int x=0; x<3; x++)
 						for(int y=0; y<3; y++)
 							v[x][y] += m.v[x][y];
 				return *this;
 			}
-			Matrix3& operator-= (const Matrix3& m) {
+			Mat3& operator-= (const Mat3& m) {
 				for(int x=0; x<3; x++)
 						for(int y=0; y<3; y++)
 							v[x][y] -= m.v[x][y];
 				return *this;
 			}
-			Matrix3& operator*= (const Matrix3& m) {
+			Mat3& operator*= (const Mat3& m) {
 				for(int x=0; x<3; x++)
 						for(int y=0; y<3; y++)
 							this->v[x][y] *= v[y][x];
 				return *this;
 			}
-			Matrix3& operator*= (const fp s) {
+			Mat3& operator*= (const fp s) {
 				for(int x=0; x<3; x++)
 						for(int y=0; y<3; y++)
 							v[x][y] *= s;
 				return *this;
 			}
-			Matrix3& operator/= (const Matrix3& m) {
+			Mat3& operator/= (const Mat3& m) {
 				for(int x=0; x<3; x++)
 					for(int y=0; y<3; y++)
 						v[x][y] /= m.v[y][x];
 				return *this;
 			}
-			Matrix3& operator/= (const fp s) {
+			Mat3& operator/= (const fp s) {
 				for(int x=0; x<3; x++)
 					for(int y=0; y<3; y++)
 						v[x][y] /= s;
 				return *this;
 			}
 
-			Matrix3& operator+ (const Matrix3& m) {
-				Matrix3* n = new Matrix3();
+			Mat3& operator+ (const Mat3& m) {
+				Mat3* n = new Mat3();
 
 				for(int x=0; x<3; x++)
 						for(int y=0; y<3; y++)
 							n->v[x][y] = v[x][y] + m.v[x][y];
 				return *n;
 			}
-			Matrix3& operator- (const Matrix3& m) {
-				Matrix3* n = new Matrix3();
+			Mat3& operator- (const Mat3& m) {
+				Mat3* n = new Mat3();
 
 				for(int x=0; x<3; x++)
 						for(int y=0; y<3; y++)
 							n->v[x][y] = v[x][y] - m.v[x][y];
 				return *n;
 			}
-			Matrix3& operator- () {
-				Matrix3* n = new Matrix3();
+			Mat3& operator- () {
+				Mat3* n = new Mat3();
 				for(int x=0; x<3; x++)
 					for(int y=0; y<3; y++)
 						n->v[x][y] = -v[x][y];
 				return *n;
 			}
-			Matrix3& operator* (const Matrix3& m) {
-				Matrix3* n = new Matrix3();
+			Mat3& operator* (const Mat3& m) {
+				Mat3* n = new Mat3();
 
 				for(int x=0; x<3; x++)
 						for(int y=0; y<3; y++)
 							n->v[x][y] = v[x][y] * m.v[y][x];
 				return *n;
 			}
-			Matrix3& operator* (const fp s) {
-				Matrix3* n = new Matrix3();
+			Mat3& operator* (const fp s) {
+				Mat3* n = new Mat3();
 
 				for(int x=0; x<3; x++)
 						for(int y=0; y<3; y++)
 							n->v[x][y] = v[x][y] * s;
 				return *n;
 			}
-			Matrix3& operator/ (const Matrix3& m) {
-				Matrix3* n = new Matrix3();
+			Mat3& operator/ (const Mat3& m) {
+				Mat3* n = new Mat3();
 
 				for(int x=0; x<3; x++)
 						for(int y=0; y<3; y++)
 							n->v[x][y] = v[x][y] / m.v[y][x];
 				return *n;
 			}
-			Matrix3& operator/ (const fp s) {
-				Matrix3* n = new Matrix3();
+			Mat3& operator/ (const fp s) {
+				Mat3* n = new Mat3();
 
 				for(int x=0; x<3; x++)
 						for(int y=0; y<3; y++)
@@ -152,14 +151,14 @@ namespace math {
 				return *n;
 			}
 
-			bool operator== (const Matrix3& m) {
+			bool operator== (const Mat3& m) {
 				for(int x=0; x<3; x++)
 						for(int y=0; y<3; y++)
 							if(v[x][y] != m.v[x][y])
 								return false;
 				return true;
 			}
-			bool operator!= (const Matrix3& m) {
+			bool operator!= (const Mat3& m) {
 				for(int x=0; x<3; x++)
 						for(int y=0; y<3; y++)
 							if(v[x][y] != m.v[x][y])
@@ -167,46 +166,46 @@ namespace math {
 				return false;
 			}
 
-			/**Transposes the matrix*/
+			/**Transposes the Mat*/
 			void trnsp();
-			/**Inverts the matrix*/
+			/**Inverts the Mat*/
 			void inv();
-			/**Sets the matrix to the identity matrix*/
+			/**Sets the Mat to the identity Mat*/
 			void idt();
-			/**Calculates the determinant of the matrix*/
+			/**Calculates the determinant of the Mat*/
 			fp det();
 
 			//Utils
-			/**Set the matrix to a rotation matrix given a rotation angle*/
+			/**Set the Mat to a rotation Mat given a rotation angle*/
 			void set_rot(fp rad);
-			/**Set the matrix to a rotation matrix given a rotation angle in degrees*/
+			/**Set the Mat to a rotation Mat given a rotation angle in degrees*/
 			void set_rotd(fp deg);
-			/**Set the matrix to a rotation matrix given a rotation axis and angle*/
+			/**Set the Mat to a rotation Mat given a rotation axis and angle*/
 			void set_rot(Vec3& axis, fp rad);
-			/**Set the matrix to a rotation matrix given a rotation axis and angle in degrees*/
+			/**Set the Mat to a rotation Mat given a rotation axis and angle in degrees*/
 			void set_rotd(Vec3& axis, fp deg);
-			/**Given the matrix is a rotation matrix, returns the rotation angle*/
+			/**Given the Mat is a rotation Mat, returns the rotation angle*/
 			fp get_rot();
-			/**Given the matrix is a rotation matrix, returns the rotation angle in degrees*/
+			/**Given the Mat is a rotation Mat, returns the rotation angle in degrees*/
 			fp get_rotd();
 
-			/**Sets the matrix to a translation matrix given translation coordinates*/
+			/**Sets the Mat to a translation Mat given translation coordinates*/
 			void set_trn(fp x, fp y);
-			/**Sets the matrix to a translation matrix given a translation vector*/
+			/**Sets the Mat to a translation Mat given a translation vector*/
 			void set_trn(Vec2& v);
-			/**Given the matrix is a translation matrix, returns the translation vector*/
+			/**Given the Mat is a translation Mat, returns the translation vector*/
 			Vec2 get_trn();
 
-			/**Sets the matrix to a scaling matrix given scale factors*/
+			/**Sets the Mat to a scaling Mat given scale factors*/
 			void set_scl(fp sx, fp sy);
-			/**Sets the matrix to a scaling matrix given a scaling vector*/
+			/**Sets the Mat to a scaling Mat given a scaling vector*/
 			void set_scl(Vec2& sv);
-			/**Given the matrix is a scaling matrix, returns the scaling vector*/
+			/**Given the Mat is a scaling Mat, returns the scaling vector*/
 			Vec2 get_scl();
 	};
 
-	//TODO: Implement Matrix4
-	class Matrix4 {};
+	//TODO: Implement Mat4
+	class Mat4 {};
 
 	//Vectors
 	class Vec2 {
@@ -225,7 +224,7 @@ namespace math {
 			Vec2&	operator-= (const Vec2& v) { x -= v.x; y -= v.y; return *this; }
 			Vec2&	operator*= (const Vec2& v) { x *= v.x; y *= v.y; return *this; }
 			Vec2&	operator*= (const fp v) { x *= v; y *= v; return *this; }
-			/*Vec2&	operator*= (const Matrix3& m) { fp x = this->x * m.val[0] + this->y * m.val[3] + m.val[6];
+			/*Vec2&	operator*= (const Mat3& m) { fp x = this->x * m.val[0] + this->y * m.val[3] + m.val[6];
 													fp y = this->x * m.val[1] + this->y * m.val[4] + m.val[7];
 													this->x = x;
 													this->y = y;
@@ -237,7 +236,7 @@ namespace math {
 			Vec2	operator- (const Vec2& v) const { return Vec2 (x - v.x, y - v.y); }
 			Vec2	operator* (const Vec2& v) const { return Vec2 (x * v.x, y * v.y); }
 			Vec2	operator* (const fp v) const { return Vec2 (x * v, y * v); }
-			/*Vec2	operator* (const Matrix3 m) { return Vec2 (	x * m.val[0] + y * m.val[3] + m.val[6],
+			/*Vec2	operator* (const Mat3 m) { return Vec2 (	x * m.val[0] + y * m.val[3] + m.val[6],
 																x * m.val[1] + y * m.val[4] + m.v[7]); };*/
 			Vec2	operator/ (const Vec2& v) const { return Vec2 (x / v.x, y / v.y); }
 			Vec2	operator/ (const fp v) const { return Vec2 (x / v, y / v); }
@@ -293,8 +292,8 @@ namespace math {
 			Vec3&	operator-= (const Vec3& v) { x -= v.x; y -= v.y; z -= v.z; return *this; }
 			Vec3&	operator*= (const Vec3& v) { x *= v.x; y *= v.y; z *= v.z; return *this; }
 			Vec3&	operator*= (const fp v) { x *= v; y *= v; z *= v; return *this; }
-			//TODO: Check Vec * Matrix operators
-			/*Vec3&	operator*= (const Matrix3& m) { fp x = this->x * m.val[0] + this->y * m.val[3] + m.val[6];
+			//TODO: Check Vec * Mat operators
+			/*Vec3&	operator*= (const Mat3& m) { fp x = this->x * m.val[0] + this->y * m.val[3] + m.val[6];
 													fp y = this->x * m.val[1] + this->y * m.val[4] + m.val[7];
 													this->x = x;
 													this->y = y;
@@ -306,7 +305,7 @@ namespace math {
 			Vec3	operator- (const Vec3& v) const { return Vec3 (x - v.x, y - v.y, z - v.z); }
 			Vec3	operator* (const Vec3& v) const { return Vec3 (x * v.x, y * v.y, z * v.z); }
 			Vec3	operator* (const fp v) const { return Vec3 (x * v, y * v, z * v); }
-			/*Vec3	operator* (const Matrix3 m) { return Vec3 (	x * m.val[0] + y * m.val[3] + m.val[6],
+			/*Vec3	operator* (const Mat3 m) { return Vec3 (	x * m.val[0] + y * m.val[3] + m.val[6],
 																x * m.val[1] + y * m.val[4] + m.v[7]); };*/
 			Vec3	operator/ (const Vec3& v) const { return Vec3 (x / v.x, y / v.y, z / v.z); }
 			Vec3	operator/ (const fp v) const { return Vec3 (x / v, y / v, z / v); }
