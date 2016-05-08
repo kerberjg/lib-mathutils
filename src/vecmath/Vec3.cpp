@@ -9,6 +9,8 @@
 
 using namespace math;
 
+//TODO: Implement missing Vec3 functions
+
 Vec3::Vec3(): x(0), y(0), z(0)  {
 }
 
