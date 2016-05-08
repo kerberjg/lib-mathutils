@@ -19,8 +19,6 @@ namespace math {
 	class Vec3;
 
 	//Matrices
-	//TODO: Implement and define Mat2
-	class Mat2 {};
 
 	class Mat3 {
 		/*
@@ -343,9 +341,6 @@ namespace math {
 			//String conversion
 			std::string to_string();
 	};
-
-	//TODO: Evaluate whether Vec4 is needed
-	class Vec4 {};
 }
 
 #endif /* VECMATH_H_ */
