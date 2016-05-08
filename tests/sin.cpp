@@ -2,7 +2,7 @@
  * sin.cpp
  *
  *  Created on: Apr 21, 2016
- *      Author: kerberjg
+ *      Author: Jamie Kerber <kerber.jg@gmail.com>
  */
 
 
