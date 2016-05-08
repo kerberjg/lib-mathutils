@@ -33,15 +33,15 @@ namespace math {
 		 * [ 2,0 2,1 2,2 ]
 		 *
 		 */
-			const u8 M00 = 0;
-			const u8 M01 = 3;
-			const u8 M02 = 6;
-			const u8 M10 = 1;
-			const u8 M11 = 4;
-			const u8 M12 = 7;
-			const u8 M20 = 2;
-			const u8 M21 = 5;
-			const u8 M22 = 8;
+			static const u8 M00 = 0;
+			static const u8 M01 = 3;
+			static const u8 M02 = 6;
+			static const u8 M10 = 1;
+			static const u8 M11 = 4;
+			static const u8 M12 = 7;
+			static const u8 M20 = 2;
+			static const u8 M21 = 5;
+			static const u8 M22 = 8;
 
 		private:
 			/**Temporary Mat*/
