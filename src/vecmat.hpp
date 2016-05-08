@@ -323,12 +323,16 @@ namespace math {
 			fp len();
 			fp len2();
 
-			//TODO: Implement missing Vec3 functions
 			//Interpolation
+			void lerp(Vec3& v, fp alpha);
 
-			//Comparing
+			//Comparison
+			inline bool epsilon_equals(Vec3& v, fp epsilon);
+			inline bool epsilon_equals(fp x, fp y, fp z, fp epsilon);
+			inline bool is_zero();
 
 			//String conversion
+			std::string to_string();
 	};
 
 	//TODO: Evaluate whether Vec4 is needed
