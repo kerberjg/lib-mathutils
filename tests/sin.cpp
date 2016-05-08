@@ -2,7 +2,7 @@
  * sin.cpp
  *
  *  Created on: Apr 21, 2016
- *      Author: mrgame64
+ *      Author: Jakub Kerber <kerber.jg@gmail.com>
  */
 
 
