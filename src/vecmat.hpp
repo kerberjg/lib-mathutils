@@ -44,13 +44,13 @@ namespace math {
 			static const u8 M22 = 8;
 
 		private:
-			/**Temporary Mat*/
+			/**Temporary matrix*/
 			fp* tmp;
-			/**Swaps temporary and Mat arrays*/
+			/**Swaps temporary and matrix arrays*/
 			void swap();
 
 		protected:
-			/**Raw Mat*/
+			/**Raw matrix*/
 			fp* v;
 
 		public:
@@ -58,7 +58,7 @@ namespace math {
 			Mat3(fp val[3][3]);
 			Mat3(const Mat3& m);
 
-			/**Copies the Mat to a new instance*/
+			/**Copies the matrix to a new instance*/
 			inline Mat3 copy() { return Mat3(*this); }
 
 			//Operators
@@ -161,41 +161,41 @@ namespace math {
 				return false;
 			}
 
-			/**Transposes the Mat*/
+			/**Transposes the matrix*/
 			void trnsp();
-			/**Inverts the Mat*/
+			/**Inverts the matrix*/
 			void inv();
-			/**Sets the Mat to the identity Mat*/
+			/**Sets the matrix to the identity Mat*/
 			void idt();
 			/**Calculates the determinant of the Mat*/
 			fp det();
 
 			//Utils
-			/**Set the Mat to a rotation Mat given a rotation angle*/
+			/**Set the matrix to a rotation matrix given a rotation angle*/
 			void set_rot(fp rad);
-			/**Set the Mat to a rotation Mat given a rotation angle in degrees*/
+			/**Set the matrix to a rotation matrix given a rotation angle in degrees*/
 			void set_rotd(fp deg);
-			/**Set the Mat to a rotation Mat given a rotation axis and angle*/
+			/**Set the matrix to a rotation matrix given a rotation axis and angle*/
 			void set_rot(Vec3& axis, fp rad);
-			/**Set the Mat to a rotation Mat given a rotation axis and angle in degrees*/
+			/**Set the matrix to a rotation matrix given a rotation axis and angle in degrees*/
 			void set_rotd(Vec3& axis, fp deg);
-			/**Given the Mat is a rotation Mat, returns the rotation angle*/
+			/**Given the matrix is a rotation matrix, returns the rotation angle*/
 			fp get_rot();
-			/**Given the Mat is a rotation Mat, returns the rotation angle in degrees*/
+			/**Given the matrix is a rotation matrix, returns the rotation angle in degrees*/
 			fp get_rotd();
 
-			/**Sets the Mat to a translation Mat given translation coordinates*/
+			/**Sets the matrix to a translation matrix given translation coordinates*/
 			void set_trn(fp x, fp y);
-			/**Sets the Mat to a translation Mat given a translation vector*/
+			/**Sets the matrix to a translation matrix given a translation vector*/
 			void set_trn(Vec2& v);
-			/**Given the Mat is a translation Mat, returns the translation vector*/
+			/**Given the matrix is a translation matrix, returns the translation vector*/
 			Vec2 get_trn();
 
-			/**Sets the Mat to a scaling Mat given scale factors*/
+			/**Sets the matrix to a scaling matrix given scale factors*/
 			void set_scl(fp sx, fp sy);
-			/**Sets the Mat to a scaling Mat given a scaling vector*/
+			/**Sets the matrix to a scaling matrix given a scaling vector*/
 			void set_scl(Vec2& sv);
-			/**Given the Mat is a scaling Mat, returns the scaling vector*/
+			/**Given the matrix is a scaling matrix, returns the scaling vector*/
 			Vec2 get_scl();
 	};
 
