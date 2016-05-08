@@ -287,12 +287,14 @@ namespace math {
 			Vec3&	operator-= (const Vec3& v) { x -= v.x; y -= v.y; z -= v.z; return *this; }
 			Vec3&	operator*= (const Vec3& v) { x *= v.x; y *= v.y; z *= v.z; return *this; }
 			Vec3&	operator*= (const fp v) { x *= v; y *= v; z *= v; return *this; }
-			//TODO: Check Vec * Mat operators
-			/*Vec3&	operator*= (const Mat3& m) { fp x = this->x * m.val[0] + this->y * m.val[3] + m.val[6];
-													fp y = this->x * m.val[1] + this->y * m.val[4] + m.val[7];
-													this->x = x;
-													this->y = y;
-													return *this; };*/
+			Vec3&	operator*= (const Mat3& m) { fp xx = x * m.v[Mat3.M00] + y * m.v[Mat3.M01] + z * m.v[Mat3.M02];
+												 fp yy = x * m.v[Mat3.M10] + y * m.v[Mat3.M11] + z * m.v[Mat3.M12];
+												 fp zz = x * m.v[Mat3.M20] + y * m.v[Mat3.M21] + z * m.v[Mat3.M22];
+
+												 x = xx;
+												 y = yy;
+												 z = zz;
+												 return *this; };
 			Vec3&	operator/= (const Vec3& v) { x /= v.x; y /= v.y; z *= v.z; return *this; }
 			Vec3&	operator/= (const fp v) { x /= v; y /= v; z /= v; return *this; }
 			Vec3	operator- () const { return Vec3( -x, -y, -z ); }
@@ -300,8 +302,9 @@ namespace math {
 			Vec3	operator- (const Vec3& v) const { return Vec3 (x - v.x, y - v.y, z - v.z); }
 			Vec3	operator* (const Vec3& v) const { return Vec3 (x * v.x, y * v.y, z * v.z); }
 			Vec3	operator* (const fp v) const { return Vec3 (x * v, y * v, z * v); }
-			/*Vec3	operator* (const Mat3 m) { return Vec3 (	x * m.val[0] + y * m.val[3] + m.val[6],
-																x * m.val[1] + y * m.val[4] + m.v[7]); };*/
+			Vec3	operator* (const Mat3 m) { return Vec3 ( x * m.v[Mat3.M00] + y * m.v[Mat3.M01] + z * m.v[Mat3.M02],
+															 x * m.v[Mat3.M10] + y * m.v[Mat3.M11] + z * m.v[Mat3.M12],
+															 x * m.v[Mat3.M20] + y * m.v[Mat3.M21] + z * m.v[Mat3.M22]); };
 			Vec3	operator/ (const Vec3& v) const { return Vec3 (x / v.x, y / v.y, z / v.z); }
 			Vec3	operator/ (const fp v) const { return Vec3 (x / v, y / v, z / v); }
 			bool	operator== (const Vec3& v) const { return (x == v.x && y == v.y && z == v.z); }
