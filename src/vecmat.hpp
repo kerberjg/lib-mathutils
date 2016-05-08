@@ -316,12 +316,21 @@ namespace math {
 			void norm();
 			void limit(fp l);
 			void clamp(fp min, fp max);
-			void set_angle();
 			void set_len(fp l);
-			void rotate();
+			void set_zero();
+			//TODO: Add angle manipulation functions
 
-			fp len();
-			fp len2();
+			inline fp len();
+			inline fp len2();
+			inline fp angle();
+			inline fp dotp(Vec3& v);
+			inline fp dotp(fp x, fp y, fp z);
+			inline fp cross(Vec3& v);
+			inline fp cross(fp x, fp y, fp z);
+			inline fp dist(Vec2& v);
+			inline fp dist(fp x, fp y, fp z);
+			inline fp dist2(Vec3& v);
+			inline fp dist2(fp x, fp y, fp z);
 
 			//Interpolation
 			void lerp(Vec3& v, fp alpha);
