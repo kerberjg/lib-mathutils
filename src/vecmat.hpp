@@ -322,7 +322,7 @@ namespace math {
 			inline fp dotp(fp x, fp y, fp z);
 			inline fp cross(Vec3& v);
 			inline fp cross(fp x, fp y, fp z);
-			inline fp dist(Vec2& v);
+			inline fp dist(Vec3& v);
 			inline fp dist(fp x, fp y, fp z);
 			inline fp dist2(Vec3& v);
 			inline fp dist2(fp x, fp y, fp z);
