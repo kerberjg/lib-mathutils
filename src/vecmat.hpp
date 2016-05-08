@@ -7,6 +7,7 @@
 #ifndef VECMATH_H_
 #define VECMATH_H_
 
+#include <stdlib.h>
 #include "mathutils.hpp"
 
 namespace math {
@@ -21,6 +22,7 @@ namespace math {
 	//Matrices
 
 	class Mat3 {
+		public:
 		/*
 		 * (i,j) => (y,x)
 		 *
@@ -31,17 +33,27 @@ namespace math {
 		 * [ 2,0 2,1 2,2 ]
 		 *
 		 */
+			const u8 M00 = 0;
+			const u8 M01 = 3;
+			const u8 M02 = 6;
+			const u8 M10 = 1;
+			const u8 M11 = 4;
+			const u8 M12 = 7;
+			const u8 M20 = 2;
+			const u8 M21 = 5;
+			const u8 M22 = 8;
 
 		private:
 			/**Temporary Mat*/
-			fp** tmp;
+			fp* tmp;
 			/**Swaps temporary and Mat arrays*/
 			void swap();
 
-		public:
+		protected:
 			/**Raw Mat*/
-			fp** v;
+			fp* v;
 
+		public:
 			Mat3();
 			Mat3(fp val[3][3]);
 			Mat3(const Mat3& m);
@@ -51,116 +63,101 @@ namespace math {
 
 			//Operators
 			Mat3& operator= (const Mat3& m) {
-				for(int x=0; x<3; x++)
-						for(int y=0; y<3; y++)
-							v[x][y] = m.v[x][y];
+				memcpy(v, m.v, 9 * sizeof(fp));
+
 				return *this;
 			}
 			Mat3& operator+= (const Mat3& m) {
-				for(int x=0; x<3; x++)
-						for(int y=0; y<3; y++)
-							v[x][y] += m.v[x][y];
+				for(int i=0; i<9; i++)
+					v[i] += m.v[i];
 				return *this;
 			}
 			Mat3& operator-= (const Mat3& m) {
-				for(int x=0; x<3; x++)
-						for(int y=0; y<3; y++)
-							v[x][y] -= m.v[x][y];
+				for(int i=0; i<9; i++)
+					v[i] -= m.v[i];
 				return *this;
 			}
 			Mat3& operator*= (const Mat3& m) {
-				for(int x=0; x<3; x++)
-						for(int y=0; y<3; y++)
-							this->v[x][y] *= v[y][x];
+				for(int i=0; i<9; i++)
+					v[i] *= m.v[i];
 				return *this;
 			}
 			Mat3& operator*= (const fp s) {
-				for(int x=0; x<3; x++)
-						for(int y=0; y<3; y++)
-							v[x][y] *= s;
+				for(int i=0; i<9; i++)
+					v[9] *= s;
 				return *this;
 			}
 			Mat3& operator/= (const Mat3& m) {
-				for(int x=0; x<3; x++)
-					for(int y=0; y<3; y++)
-						v[x][y] /= m.v[y][x];
+				for(int i=0; i<9; i++)
+					v[xi] /= m.v[i];
 				return *this;
 			}
 			Mat3& operator/= (const fp s) {
-				for(int x=0; x<3; x++)
-					for(int y=0; y<3; y++)
-						v[x][y] /= s;
+				for(int i=0; i<9; i++)
+					v[i] /= s;
 				return *this;
 			}
 
 			Mat3& operator+ (const Mat3& m) {
 				Mat3* n = new Mat3();
 
-				for(int x=0; x<3; x++)
-						for(int y=0; y<3; y++)
-							n->v[x][y] = v[x][y] + m.v[x][y];
+				for(int i=0; i<9; i++)
+					n->v[i] = v[i] + m.v[i];
 				return *n;
 			}
 			Mat3& operator- (const Mat3& m) {
 				Mat3* n = new Mat3();
 
-				for(int x=0; x<3; x++)
-						for(int y=0; y<3; y++)
-							n->v[x][y] = v[x][y] - m.v[x][y];
+				for(int i=0; i<9; i++)
+					n->v[i] = v[i] - m.v[i];
 				return *n;
 			}
 			Mat3& operator- () {
 				Mat3* n = new Mat3();
-				for(int x=0; x<3; x++)
-					for(int y=0; y<3; y++)
-						n->v[x][y] = -v[x][y];
+
+				for(int i=0; i<9; i++)
+					n->v[i] = -v[i];
 				return *n;
 			}
 			Mat3& operator* (const Mat3& m) {
 				Mat3* n = new Mat3();
 
-				for(int x=0; x<3; x++)
-						for(int y=0; y<3; y++)
-							n->v[x][y] = v[x][y] * m.v[y][x];
+				for(int i=0; i<9; i++)
+					n->v[i] = v[i] * m.v[i];
 				return *n;
 			}
 			Mat3& operator* (const fp s) {
 				Mat3* n = new Mat3();
 
-				for(int x=0; x<3; x++)
-						for(int y=0; y<3; y++)
-							n->v[x][y] = v[x][y] * s;
+				for(int i=0; i<9; i++)
+					n->v[i] = v[i] * s;
 				return *n;
 			}
 			Mat3& operator/ (const Mat3& m) {
 				Mat3* n = new Mat3();
 
-				for(int x=0; x<3; x++)
-						for(int y=0; y<3; y++)
-							n->v[x][y] = v[x][y] / m.v[y][x];
+				for(int i=0; i<9; i++)
+					n->v[i] = v[i] / m.v[i];
 				return *n;
 			}
 			Mat3& operator/ (const fp s) {
 				Mat3* n = new Mat3();
 
-				for(int x=0; x<3; x++)
-						for(int y=0; y<3; y++)
-							n->v[x][y] = v[x][y] / s;
+				for(int i=0; i<9; i++)
+					n->v[i] = v[i] / s;
 				return *n;
 			}
 
 			bool operator== (const Mat3& m) {
-				for(int x=0; x<3; x++)
-						for(int y=0; y<3; y++)
-							if(v[x][y] != m.v[x][y])
-								return false;
+				for(int i=0; i<9; i++)
+					if(v[i] != m.v[i])
+						return false;
 				return true;
 			}
 			bool operator!= (const Mat3& m) {
-				for(int x=0; x<3; x++)
-						for(int y=0; y<3; y++)
-							if(v[x][y] != m.v[x][y])
-								return true;
+				for(int i=0; i<9; i++)
+					if(v[i] != m.v[i])
+						return true;
 				return false;
 			}
 
