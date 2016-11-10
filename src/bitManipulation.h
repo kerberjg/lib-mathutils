@@ -27,12 +27,7 @@ inline u8 clearBit(u8 data, int n)
 {return data & ~(1 << n);}
 
 inline u8 affectBit(u8 data, int n, bool bit)
-{
-	if(bit)
-		return setBit(data, n);
-	else
-		return clearBit(data, n);
-}
+{return (bit ? setBit(data, n) | clearBit(data, n));}
 
 inline bool testBit(u8 data, int n)
 {return ((data & (1 << n)) == 1);}
